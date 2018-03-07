@@ -148,6 +148,8 @@ Next: <a href="objdump.html#objdump" accesskey="n" rel="next">objdump</a>, Previ
         [<samp>--compress-debug-sections</samp>]
         [<samp>--decompress-debug-sections</samp>]
         [<samp>--elf-stt-common=<var>val</var></samp>]
+        [<samp>--merge-notes</samp>]
+        [<samp>--no-merge-notes</samp>]
         [<samp>-v</samp>|<samp>--verbose</samp>]
         [<samp>-V</samp>|<samp>--version</samp>]
         [<samp>--help</samp>] [<samp>--info</samp>]
@@ -1041,6 +1043,12 @@ converted to the <code>STT_COMMON</code> or <code>STT_OBJECT</code> type.
 <samp>--elf-stt-common=yes</samp> converts common symbol type to
 <code>STT_COMMON</code>. <samp>--elf-stt-common=no</samp> converts common symbol
 type to <code>STT_OBJECT</code>.
+</p>
+</dd>
+<dt><code>--merge-notes</code></dt>
+<dt><code>--no-merge-notes</code></dt>
+<dd><p>For ELF files, attempt (or do not attempt) to reduce the size of any
+SHT_NOTE type sections by removing duplicate notes.
 </p>
 </dd>
 <dt><code>-V</code></dt>

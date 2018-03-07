@@ -293,7 +293,16 @@ environment:
 <pre class="smallexample">$ gdbserver --wrapper env LD_PRELOAD=libtest.so -- :2222 ./testprog
 </pre></div>
 
-<a name="Connecting-to-gdbserver"></a>
+<a name="index-_002d_002dselftest"></a>
+<p>The <samp>--selftest</samp> option runs the self tests in <code>gdbserver</code>:
+</p>
+<div class="smallexample">
+<pre class="smallexample">$ gdbserver --selftest
+Ran 2 unit tests, 0 failed
+</pre></div>
+
+<p>These tests are disabled in release.
+</p><a name="Connecting-to-gdbserver"></a>
 <h4 class="subsection">20.3.2 Connecting to <code>gdbserver</code></h4>
 
 <p>The basic procedure for connecting to the remote target is:

@@ -179,8 +179,8 @@ exception_code
 
 <p>The two <code>exception_code</code> invocations above would create the
 <code>.text.exception</code> and <code>.init.exception</code> sections respectively.
-This is useful e.g. to discriminate between anciliary sections that are
-tied to setup code to be discarded after use from anciliary sections that
+This is useful e.g. to discriminate between ancillary sections that are
+tied to setup code to be discarded after use from ancillary sections that
 need to stay resident without having to define multiple <code>exception_code</code>
 macros just for that purpose.
 </p>
@@ -190,6 +190,9 @@ combination of the following characters:
 <dl compact="compact">
 <dt><code>a</code></dt>
 <dd><p>section is allocatable
+</p></dd>
+<dt><code>d</code></dt>
+<dd><p>section is a GNU_MBIND section
 </p></dd>
 <dt><code>e</code></dt>
 <dd><p>section is excluded from executable and shared library.

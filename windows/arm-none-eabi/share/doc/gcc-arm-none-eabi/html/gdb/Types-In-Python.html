@@ -148,7 +148,7 @@ into one of these categories, an empty sequence will be returned.
 </p><dl compact="compact">
 <dt><code>bitpos</code></dt>
 <dd><p>This attribute is not available for <code>enum</code> or <code>static</code>
-(as in C<tt>++</tt> or Java) fields.  The value is the position, counting
+(as in C<tt>++</tt>) fields.  The value is the position, counting
 in bits, from the start of the containing type.
 </p>
 </dd>
@@ -414,7 +414,7 @@ language-defined string types; C strings are not represented this way.
 <dt><code>gdb.TYPE_CODE_METHOD</code>
 <a name="index-gdb_002eTYPE_005fCODE_005fMETHOD"></a>
 </dt>
-<dd><p>A method type, as found in C<tt>++</tt> or Java.
+<dd><p>A method type, as found in C<tt>++</tt>.
 </p>
 <a name="index-TYPE_005fCODE_005fMETHODPTR"></a>
 </dd>
@@ -436,6 +436,13 @@ language-defined string types; C strings are not represented this way.
 <a name="index-gdb_002eTYPE_005fCODE_005fREF"></a>
 </dt>
 <dd><p>A reference type.
+</p>
+<a name="index-TYPE_005fCODE_005fRVALUE_005fREF"></a>
+</dd>
+<dt><code>gdb.TYPE_CODE_RVALUE_REF</code>
+<a name="index-gdb_002eTYPE_005fCODE_005fRVALUE_005fREF"></a>
+</dt>
+<dd><p>A C<tt>++</tt>11 rvalue reference type.
 </p>
 <a name="index-TYPE_005fCODE_005fCHAR"></a>
 </dd>

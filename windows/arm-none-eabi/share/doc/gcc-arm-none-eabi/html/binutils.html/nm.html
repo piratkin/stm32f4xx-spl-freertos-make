@@ -75,7 +75,8 @@ Next: <a href="objcopy.html#objcopy" accesskey="n" rel="next">objcopy</a>, Previ
    [<samp>-B</samp>|<samp>--format=bsd</samp>] [<samp>-C</samp>|<samp>--demangle</samp>[=<var>style</var>]]
    [<samp>-D</samp>|<samp>--dynamic</samp>] [<samp>-f</samp><var>format</var>|<samp>--format=</samp><var>format</var>]
    [<samp>-g</samp>|<samp>--extern-only</samp>] [<samp>-h</samp>|<samp>--help</samp>]
-   [<samp>-l</samp>|<samp>--line-numbers</samp>] [<samp>-n</samp>|<samp>-v</samp>|<samp>--numeric-sort</samp>]
+   [<samp>-l</samp>|<samp>--line-numbers</samp>] [<samp>--inlines</samp>]
+   [<samp>-n</samp>|<samp>-v</samp>|<samp>--numeric-sort</samp>]
    [<samp>-P</samp>|<samp>--portability</samp>] [<samp>-p</samp>|<samp>--no-sort</samp>]
    [<samp>-r</samp>|<samp>--reverse-sort</samp>] [<samp>-S</samp>|<samp>--print-size</samp>]
    [<samp>-s</samp>|<samp>--print-armap</samp>] [<samp>-t</samp> <var>radix</var>|<samp>--radix=</samp><var>radix</var>]
@@ -299,6 +300,17 @@ number of a relocation entry which refers to the symbol.  If line number
 information can be found, print it after the other symbol information.
 </p>
 </dd>
+<dt><code>--inlines</code></dt>
+<dd><a name="index-objdump-inlines"></a>
+<p>When option <samp>-l</samp> is active, if the address belongs to a
+function that was inlined, then this option causes the source 
+information for all enclosing scopes back to the first non-inlined
+function to be printed as well.  For example, if <code>main</code> inlines
+<code>callee1</code> which inlines <code>callee2</code>, and address is from
+<code>callee2</code>, the source information for <code>callee1</code> and <code>main</code>
+will also be printed.
+</p>
+</dd>
 <dt><code>-n</code></dt>
 <dt><code>-v</code></dt>
 <dt><code>--numeric-sort</code></dt>
@@ -373,10 +385,24 @@ to <samp>-X 32</samp>, which is not supported by <small>GNU</small> <code>nm</co
 </p>
 </dd>
 <dt><code>--plugin <var>name</var></code></dt>
-<dd><a name="index-load-plugin"></a>
+<dd><a name="index-plugins-1"></a>
 <p>Load the plugin called <var>name</var> to add support for extra target
 types.  This option is only available if the toolchain has been built
 with plugin support enabled.
+</p>
+<p>If <samp>--plugin</samp> is not provided, but plugin support has been
+enabled then <code>nm</code> iterates over the files in
+<samp>${libdir}/bfd-plugins</samp> in alphabetic order and the first
+plugin that claims the object in question is used.
+</p>
+<p>Please note that this plugin search directory is <em>not</em> the one
+used by <code>ld</code>&rsquo;s <samp>-plugin</samp> option.  In order to make
+<code>nm</code> use the  linker plugin it must be copied into the
+<samp>${libdir}/bfd-plugins</samp> directory.  For GCC based compilations
+the linker plugin is called <samp>liblto_plugin.so.0.0.0</samp>.  For Clang
+based compilations it is called <samp>LLVMgold.so</samp>.  The GCC plugin
+is always backwards compatible with earlier versions, so it is
+sufficient to just copy the newest one.
 </p>
 </dd>
 <dt><code>--size-sort</code></dt>

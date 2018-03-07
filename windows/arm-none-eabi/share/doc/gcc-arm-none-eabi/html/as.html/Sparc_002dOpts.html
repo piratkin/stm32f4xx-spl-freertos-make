@@ -66,8 +66,8 @@ ul.no-bullet {list-style: none}
 Next: <a href="Sparc_002dAligned_002dData.html#Sparc_002dAligned_002dData" accesskey="n" rel="next">Sparc-Aligned-Data</a>, Up: <a href="Sparc_002dDependent.html#Sparc_002dDependent" accesskey="u" rel="up">Sparc-Dependent</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="AS-Index.html#AS-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Options-24"></a>
-<h4 class="subsection">9.43.1 Options</h4>
+<a name="Options-25"></a>
+<h4 class="subsection">9.44.1 Options</h4>
 
 <a name="index-options-for-SPARC"></a>
 <a name="index-SPARC-options"></a>
@@ -116,10 +116,11 @@ is explicitly requested.  SPARC v9 is always incompatible with sparclite.
 <a name="index-_002dAsparcvis3r"></a>
 </dd>
 <dt><code>-Av6 | -Av7 | -Av8 | -Aleon | -Asparclet | -Asparclite</code></dt>
-<dt><code>-Av8plus | -Av8plusa | -Av8plusb | -Av8plusc | -Av8plusd | -Av8plusv | -Av8plusm</code></dt>
-<dt><code>-Av9 | -Av9a | -Av9b | -Av9c | -Av9d | -Av9e | -Av9v | -Av9m</code></dt>
+<dt><code>-Av8plus | -Av8plusa | -Av8plusb | -Av8plusc | -Av8plusd |</code></dt>
+<dt><code>-Av8plusv | -Av8plusm | -Av8plusm8</code></dt>
+<dt><code>-Av9 | -Av9a | -Av9b | -Av9c | -Av9d | -Av9e | -Av9v | -Av9m | -Av9m8</code></dt>
 <dt><code>-Asparc | -Asparcvis | -Asparcvis2 | -Asparcfmaf | -Asparcima</code></dt>
-<dt><code>-Asparcvis3 | -Asparcvis3r | -Asparc5</code></dt>
+<dt><code>-Asparcvis3 | -Asparcvis3r | -Asparc5 | -Asparc6</code></dt>
 <dd><p>Use one of the &lsquo;<samp>-A</samp>&rsquo; options to select one of the SPARC
 architectures explicitly.  If you select an architecture explicitly,
 <code>as</code> reports a fatal error if it encounters an instruction
@@ -158,6 +159,10 @@ enabled by &lsquo;<samp>-Av8pluse</samp>&rsquo; and &lsquo;<samp>-Av9e</samp>&rs
 xmpmul, xmontmul and xmontsqr instructions, as well as the instructions
 enabled by &lsquo;<samp>-Av8plusv</samp>&rsquo; and &lsquo;<samp>-Av9v</samp>&rsquo;.
 </p>
+<p>&lsquo;<samp>-Av8plusm8</samp>&rsquo; and &lsquo;<samp>-Av9m8</samp>&rsquo; enable the instructions introduced
+in the Oracle SPARC Architecture 2017 and the M8 processor, as
+well as the instructions enabled by &lsquo;<samp>-Av8plusm</samp>&rsquo; and &lsquo;<samp>-Av9m</samp>&rsquo;.
+</p>
 <p>&lsquo;<samp>-Asparc</samp>&rsquo; specifies a v9 environment.  It is equivalent to
 &lsquo;<samp>-Av9</samp>&rsquo; if the word size is 64-bit, and &lsquo;<samp>-Av8plus</samp>&rsquo; otherwise.
 </p>
@@ -181,18 +186,23 @@ and floating point unfused multiply-add instructions enabled.
 </p>
 <p>&lsquo;<samp>-Asparc5</samp>&rsquo; is equivalent to &lsquo;<samp>-Av9m</samp>&rsquo;.
 </p>
+<p>&lsquo;<samp>-Asparc6</samp>&rsquo; is equivalent to &lsquo;<samp>-Av9m8</samp>&rsquo;.
+</p>
 </dd>
 <dt><code>-xarch=v8plus | -xarch=v8plusa | -xarch=v8plusb | -xarch=v8plusc</code></dt>
-<dt><code>-xarch=v8plusd | -xarch=v8plusv | -xarch=v8plusm | -xarch=v9 | -xarch=v9a</code></dt>
-<dt><code>-xarch=v9b | -xarch=v9c | -xarch=v9d | -xarch=v9e | -xarch=v9v | -xarch=v9m</code></dt>
+<dt><code>-xarch=v8plusd | -xarch=v8plusv | -xarch=v8plusm |</code></dt>
+<dt><code>-xarch=v8plusm8 | -xarch=v9 | -xarch=v9a | -xarch=v9b</code></dt>
+<dt><code>-xarch=v9c | -xarch=v9d | -xarch=v9e | -xarch=v9v</code></dt>
+<dt><code>-xarch=v9m | -xarch=v9m8</code></dt>
 <dt><code>-xarch=sparc | -xarch=sparcvis | -xarch=sparcvis2</code></dt>
 <dt><code>-xarch=sparcfmaf | -xarch=sparcima | -xarch=sparcvis3</code></dt>
-<dt><code>-xarch=sparcvis3r | -xarch=sparc5</code></dt>
+<dt><code>-xarch=sparcvis3r | -xarch=sparc5 | -xarch=sparc6</code></dt>
 <dd><p>For compatibility with the SunOS v9 assembler.  These options are
 equivalent to -Av8plus, -Av8plusa, -Av8plusb, -Av8plusc, -Av8plusd,
--Av8plusv, -Av8plusm, -Av9, -Av9a, -Av9b, -Av9c, -Av9d, -Av9e, -Av9v, -Av9m,
--Asparc, -Asparcvis, -Asparcvis2, -Asparcfmaf, -Asparcima,
--Asparcvis3, and -Asparcvis3r, respectively.
+-Av8plusv, -Av8plusm, -Av8plusm8, -Av9, -Av9a, -Av9b, -Av9c, -Av9d,
+-Av9e, -Av9v, -Av9m, -Av9m8, -Asparc, -Asparcvis, -Asparcvis2,
+-Asparcfmaf, -Asparcima, -Asparcvis3, -Asparcvis3r, -Asparc5 and
+-Asparc6 respectively.
 </p>
 </dd>
 <dt><code>-bump</code></dt>

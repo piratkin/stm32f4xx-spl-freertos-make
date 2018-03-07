@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -99,6 +99,14 @@ files are written to output section &lsquo;<samp>outputc</samp>&rsquo;.
 }
 </pre></div>
 
+<p>If an output section&rsquo;s name is the same as the input section&rsquo;s name
+and is representable as a C identifier, then the linker will
+automatically see <a href="PROVIDE.html#PROVIDE">PROVIDE</a> two symbols: __start_SECNAME and
+__stop_SECNAME, where SECNAME is the name of the section.  These
+indicate the start address and end address of the output section
+respectively.  Note: most section names are not representable as
+C identifiers because they contain a &lsquo;<samp>.</samp>&rsquo; character.
+</p>
 
 
 

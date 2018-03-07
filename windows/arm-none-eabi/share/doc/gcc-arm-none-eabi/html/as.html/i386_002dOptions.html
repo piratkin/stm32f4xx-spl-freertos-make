@@ -195,6 +195,10 @@ accept various extension mnemonics.  For example,
 <code>sha</code>,
 <code>rdpid</code>,
 <code>ptwrite</code>,
+<code>cet</code>,
+<code>gfni</code>,
+<code>vaes</code>,
+<code>vpclmulqdq</code>,
 <code>prefetchwt1</code>,
 <code>clflushopt</code>,
 <code>se1</code>,
@@ -211,6 +215,9 @@ accept various extension mnemonics.  For example,
 <code>avx512_4fmaps</code>,
 <code>avx512_4vnniw</code>,
 <code>avx512_vpopcntdq</code>,
+<code>avx512_vbmi2</code>,
+<code>avx512_vnni</code>,
+<code>avx512_bitalg</code>,
 <code>noavx512f</code>,
 <code>noavx512cd</code>,
 <code>noavx512er</code>,
@@ -223,6 +230,9 @@ accept various extension mnemonics.  For example,
 <code>noavx512_4fmaps</code>,
 <code>noavx512_4vnniw</code>,
 <code>noavx512_vpopcntdq</code>,
+<code>noavx512_vbmi2</code>,
+<code>noavx512_vnni</code>,
+<code>noavx512_bitalg</code>,
 <code>vmx</code>,
 <code>vmfunc</code>,
 <code>smx</code>,
@@ -354,7 +364,7 @@ take precedent.
 <a name="index-_002dmnaked_002dreg-option_002c-x86_002d64"></a>
 </dd>
 <dt><code>-mnaked-reg</code></dt>
-<dd><p>This opetion specifies that registers don&rsquo;t require a &lsquo;<samp>%</samp>&rsquo; prefix.
+<dd><p>This option specifies that registers don&rsquo;t require a &lsquo;<samp>%</samp>&rsquo; prefix.
 The <code>.att_syntax</code> and <code>.intel_syntax</code> directives will take precedent.
 </p>
 <a name="index-_002dmadd_002dbnd_002dprefix-option_002c-i386"></a>

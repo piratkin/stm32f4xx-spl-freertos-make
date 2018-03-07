@@ -74,15 +74,7 @@ Next: <a href="ARM-Opcodes.html#ARM-Opcodes" accesskey="n" rel="next">ARM Opcode
 <dl compact="compact">
 <dd>
 
-<a name="index-_002e2byte-directive_002c-ARM"></a>
-<a name="index-_002e4byte-directive_002c-ARM"></a>
-<a name="index-_002e8byte-directive_002c-ARM"></a>
-</dd>
-<dt><code>.2byte <var>expression</var> [, <var>expression</var>]*</code></dt>
-<dt><code>.4byte <var>expression</var> [, <var>expression</var>]*</code></dt>
-<dt><code>.8byte <var>expression</var> [, <var>expression</var>]*</code></dt>
-<dd><p>These directives write 2, 4 or 8 byte values to the output section.
-</p>
+
 <a name="index-_002ealign-directive_002c-ARM"></a>
 </dd>
 <dt><code>.align <var>expression</var> [, <var>expression</var>]</code></dt>
@@ -426,7 +418,7 @@ between Arm and Thumb instructions and should be used even if
 interworking is not going to be performed.  The presence of this
 directive also implies <code>.thumb</code>
 </p>
-<p>This directive is not neccessary when generating EABI objects.  On these
+<p>This directive is not necessary when generating EABI objects.  On these
 targets the encoding is implicit when generating Thumb code.
 </p>
 <a name="index-_002ethumb_005fset-directive_002c-ARM"></a>
@@ -464,7 +456,7 @@ should only be done if it is really necessary.
 <a name="index-_002eunwind_005fraw-directive_002c-ARM"></a>
 </dd>
 <dt><code>.unwind_raw <var>offset</var>, <var>byte1</var>, &hellip;</code></dt>
-<dd><p>Insert one of more arbitary unwind opcode bytes, which are known to adjust
+<dd><p>Insert one of more arbitrary unwind opcode bytes, which are known to adjust
 the stack pointer by <var>offset</var> bytes.
 </p>
 <p>For example <code>.unwind_raw 4, 0xb1, 0x01</code> is equivalent to

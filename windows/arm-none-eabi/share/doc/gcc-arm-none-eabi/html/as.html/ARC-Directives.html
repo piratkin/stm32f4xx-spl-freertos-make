@@ -392,6 +392,23 @@ discarding the result of the operation.
 <p>which describes a two operand instruction with an implicit first
 immediate operand.  The result of this operation would be discarded.
 </p>
+<a name="index-_002earc_005fattribute-directive_002c-ARC"></a>
+</dd>
+<dt><code>.arc_attribute <var>tag</var>, <var>value</var></code></dt>
+<dd><p>Set the ARC object attribute <var>tag</var> to <var>value</var>.
+</p>
+<p>The <var>tag</var> is either an attribute number, or one of the following:
+<code>Tag_ARC_PCS_config</code>, <code>Tag_ARC_CPU_base</code>,
+<code>Tag_ARC_CPU_variation</code>, <code>Tag_ARC_CPU_name</code>,
+<code>Tag_ARC_ABI_rf16</code>, <code>Tag_ARC_ABI_osver</code>, <code>Tag_ARC_ABI_sda</code>,
+<code>Tag_ARC_ABI_pic</code>, <code>Tag_ARC_ABI_tls</code>, <code>Tag_ARC_ABI_enumsize</code>,
+<code>Tag_ARC_ABI_exceptions</code>, <code>Tag_ARC_ABI_double_size</code>,
+<code>Tag_ARC_ISA_config</code>, <code>Tag_ARC_ISA_apex</code>,
+<code>Tag_ARC_ISA_mpy_option</code>
+</p>
+<p>The <var>value</var> is either a <code>number</code>, <code>&quot;string&quot;</code>, or
+<code>number, &quot;string&quot;</code> depending on the tag.
+</p>
 </dd>
 </dl>
 

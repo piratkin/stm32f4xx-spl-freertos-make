@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -535,9 +535,9 @@ order in which the options appear.  <samp>-L</samp> options do not affect
 how <code>ld</code> searches for a linker script unless <samp>-T</samp>
 option is specified.
 </p>
-<p>If <var>searchdir</var> begins with <code>=</code>, then the <code>=</code> will be replaced
-by the <em>sysroot prefix</em>, controlled by the &lsquo;<samp>--sysroot</samp>&rsquo; option, or
-specified when the linker is configured.
+<p>If <var>searchdir</var> begins with <code>=</code> or <code>$SYSROOT</code>, then this
+prefix will be replaced by the <em>sysroot prefix</em>, controlled by the
+&lsquo;<samp>--sysroot</samp>&rsquo; option, or specified when the linker is configured.
 </p>
 <p>The default set of paths searched (without being specified with
 &lsquo;<samp>-L</samp>&rsquo;) depends on which emulation mode <code>ld</code> is using, and in
@@ -659,6 +659,23 @@ the linker may make more use of this option.  Also currently there is
 no difference in the linker&rsquo;s behaviour for different non-zero values
 of this option.  Again this may change with future releases.
 </p>
+<a name="index-_002dplugin-name"></a>
+</dd>
+<dt><code>-plugin <var>name</var></code></dt>
+<dd><p>Involve a plugin in the linking process.  The <var>name</var> parameter is
+the absolute filename of the plugin.  Usually this parameter is
+automatically added by the complier, when using link time
+optimization, but users can also add their own plugins if they so
+wish.
+</p>
+<p>Note that the location of the compiler originated plugins is different
+from the place where the <code>ar</code>, <code>nm</code> and
+<code>ranlib</code> programs search for their plugins.  In order for
+those commands to make use of a compiler based plugin it must first be
+copied into the <samp>${libdir}/bfd-plugins</samp> directory.  All gcc
+based linker plugins are backward compatible, so it is sufficient to
+just copy in the newest one.
+</p>
 <a name="index-_002d_002dpush_002dstate"></a>
 <a name="index-push-state-governing-input-file-handling"></a>
 </dd>
@@ -685,7 +702,9 @@ something as follows:
 
 <a name="index-_002d_002dpop_002dstate"></a>
 <a name="index-pop-state-governing-input-file-handling"></a>
-<p>Undoes the effect of &ndash;push-state, restores the previous values of the
+</dd>
+<dt><code>--pop-state</code></dt>
+<dd><p>Undoes the effect of &ndash;push-state, restores the previous values of the
 flags governing input file handling.
 </p>
 <a name="index-_002dq"></a>
@@ -762,6 +781,14 @@ the <samp>-rpath</samp> option.
 <dt><code>-S</code></dt>
 <dt><code>--strip-debug</code></dt>
 <dd><p>Omit debugger symbol information (but not all symbols) from the output file.
+</p>
+<a name="index-_002d_002dstrip_002ddiscarded"></a>
+<a name="index-_002d_002dno_002dstrip_002ddiscarded"></a>
+</dd>
+<dt><code>--strip-discarded</code></dt>
+<dt><code>--no-strip-discarded</code></dt>
+<dd><p>Omit (or do not omit) global symbols defined in discarded sections.
+Enabled by default.
 </p>
 <a name="index-_002dt"></a>
 <a name="index-_002d_002dtrace"></a>
@@ -858,7 +885,7 @@ specifically mentioned in a linker script.  See <a href="Orphan-Sections.html#Or
 <dt><code>place</code></dt>
 <dd><p>Orphan sections are placed into a suitable output section following
 the strategy described in <a href="Orphan-Sections.html#Orphan-Sections">Orphan Sections</a>.  The option
-&lsquo;<samp>--unique</samp>&rsquo; also effects how sections are placed.
+&lsquo;<samp>--unique</samp>&rsquo; also affects how sections are placed.
 </p>
 </dd>
 <dt><code>discard</code></dt>
@@ -942,166 +969,8 @@ for Solaris compatibility.
 <dt><code>-z <var>keyword</var></code></dt>
 <dd><p>The recognized keywords are:
 </p><dl compact="compact">
-<dt>&lsquo;<samp>combreloc</samp>&rsquo;</dt>
-<dd><p>Combines multiple reloc sections and sorts them to make dynamic symbol
-lookup caching possible.
-</p>
-</dd>
-<dt>&lsquo;<samp>common</samp>&rsquo;</dt>
-<dd><p>Generate common symbols with the STT_COMMON type druing a relocatable
-link.
-</p>
-</dd>
-<dt>&lsquo;<samp>defs</samp>&rsquo;</dt>
-<dd><p>Disallows undefined symbols in object files.  Undefined symbols in
-shared libraries are still allowed.
-</p>
-</dd>
-<dt>&lsquo;<samp>execstack</samp>&rsquo;</dt>
-<dd><p>Marks the object as requiring executable stack.
-</p>
-</dd>
-<dt>&lsquo;<samp>global</samp>&rsquo;</dt>
-<dd><p>This option is only meaningful when building a shared object.  It makes
-the symbols defined by this shared object available for symbol resolution
-of subsequently loaded libraries.
-</p>
-</dd>
-<dt>&lsquo;<samp>initfirst</samp>&rsquo;</dt>
-<dd><p>This option is only meaningful when building a shared object.
-It marks the object so that its runtime initialization will occur
-before the runtime initialization of any other objects brought into
-the process at the same time.  Similarly the runtime finalization of
-the object will occur after the runtime finalization of any other
-objects.
-</p>
-</dd>
-<dt>&lsquo;<samp>interpose</samp>&rsquo;</dt>
-<dd><p>Marks the object that its symbol table interposes before all symbols
-but the primary executable.
-</p>
-</dd>
-<dt>&lsquo;<samp>lazy</samp>&rsquo;</dt>
-<dd><p>When generating an executable or shared library, mark it to tell the
-dynamic linker to defer function call resolution to the point when
-the function is called (lazy binding), rather than at load time.
-Lazy binding is the default.
-</p>
-</dd>
-<dt>&lsquo;<samp>loadfltr</samp>&rsquo;</dt>
-<dd><p>Marks  the object that its filters be processed immediately at
-runtime.
-</p>
-</dd>
-<dt>&lsquo;<samp>muldefs</samp>&rsquo;</dt>
-<dd><p>Allows multiple definitions.
-</p>
-</dd>
-<dt>&lsquo;<samp>nocombreloc</samp>&rsquo;</dt>
-<dd><p>Disables multiple reloc sections combining.
-</p>
-</dd>
-<dt>&lsquo;<samp>nocommon</samp>&rsquo;</dt>
-<dd><p>Generate common symbols with the STT_OBJECT type druing a relocatable
-link.
-</p>
-</dd>
-<dt>&lsquo;<samp>nocopyreloc</samp>&rsquo;</dt>
-<dd><p>Disable linker generated .dynbss variables used in place of variables
-defined in shared libraries.  May result in dynamic text relocations.
-</p>
-</dd>
-<dt>&lsquo;<samp>nodefaultlib</samp>&rsquo;</dt>
-<dd><p>Marks the object that the search for dependencies of this object will
-ignore any default library search paths.
-</p>
-</dd>
-<dt>&lsquo;<samp>nodelete</samp>&rsquo;</dt>
-<dd><p>Marks the object shouldn&rsquo;t be unloaded at runtime.
-</p>
-</dd>
-<dt>&lsquo;<samp>nodlopen</samp>&rsquo;</dt>
-<dd><p>Marks the object not available to <code>dlopen</code>.
-</p>
-</dd>
-<dt>&lsquo;<samp>nodump</samp>&rsquo;</dt>
-<dd><p>Marks the object can not be dumped by <code>dldump</code>.
-</p>
-</dd>
-<dt>&lsquo;<samp>noexecstack</samp>&rsquo;</dt>
-<dd><p>Marks the object as not requiring executable stack.
-</p>
-</dd>
-<dt>&lsquo;<samp>text</samp>&rsquo;</dt>
-<dd><p>Treat DT_TEXTREL in shared object as error.
-</p>
-</dd>
-<dt>&lsquo;<samp>notext</samp>&rsquo;</dt>
-<dd><p>Don&rsquo;t treat DT_TEXTREL in shared object as error.
-</p>
-</dd>
-<dt>&lsquo;<samp>textoff</samp>&rsquo;</dt>
-<dd><p>Don&rsquo;t treat DT_TEXTREL in shared object as error.
-</p>
-</dd>
-<dt>&lsquo;<samp>norelro</samp>&rsquo;</dt>
-<dd><p>Don&rsquo;t create an ELF <code>PT_GNU_RELRO</code> segment header in the object.
-</p>
-</dd>
-<dt>&lsquo;<samp>now</samp>&rsquo;</dt>
-<dd><p>When generating an executable or shared library, mark it to tell the
-dynamic linker to resolve all symbols when the program is started, or
-when the shared library is linked to using dlopen, instead of
-deferring function call resolution to the point when the function is
-first called.
-</p>
-</dd>
-<dt>&lsquo;<samp>origin</samp>&rsquo;</dt>
-<dd><p>Marks the object may contain $ORIGIN.
-</p>
-</dd>
-<dt>&lsquo;<samp>relro</samp>&rsquo;</dt>
-<dd><p>Create an ELF <code>PT_GNU_RELRO</code> segment header in the object.
-</p>
-</dd>
-<dt>&lsquo;<samp>max-page-size=<var>value</var></samp>&rsquo;</dt>
-<dd><p>Set the emulation maximum page size to <var>value</var>.
-</p>
-</dd>
-<dt>&lsquo;<samp>common-page-size=<var>value</var></samp>&rsquo;</dt>
-<dd><p>Set the emulation common page size to <var>value</var>.
-</p>
-</dd>
-<dt>&lsquo;<samp>stack-size=<var>value</var></samp>&rsquo;</dt>
-<dd><p>Specify a stack size for in an ELF <code>PT_GNU_STACK</code> segment.
-Specifying zero will override any default non-zero sized
-<code>PT_GNU_STACK</code> segment creation.
-</p>
-</dd>
 <dt>&lsquo;<samp>bndplt</samp>&rsquo;</dt>
 <dd><p>Always generate BND prefix in PLT entries. Supported for Linux/x86_64.
-</p>
-</dd>
-<dt>&lsquo;<samp>noextern-protected-data</samp>&rsquo;</dt>
-<dd><p>Don&rsquo;t treat protected data symbol as external when building shared
-library.  This option overrides linker backend default.  It can be used
-to workaround incorrect relocations against protected data symbols
-generated by compiler.  Updates on protected data symbols by another
-module aren&rsquo;t visible to the resulting shared library.  Supported for
-i386 and x86-64.
-</p>
-</dd>
-<dt>&lsquo;<samp>nodynamic-undefined-weak</samp>&rsquo;</dt>
-<dd><p>Don&rsquo;t treat undefined weak symbols as dynamic when building executable.
-This option overrides linker backend default.  It can be used to avoid
-dynamic relocations against undefined weak symbols in executable.
-Supported for i386 and x86-64.
-</p>
-</dd>
-<dt>&lsquo;<samp>noreloc-overflow</samp>&rsquo;</dt>
-<dd><p>Disable relocation overflow check.  This can be used to disable
-relocation overflow check if there will be no dynamic relocation
-overflow at run-time.  Supported for x86_64.
 </p>
 </dd>
 <dt>&lsquo;<samp>call-nop=prefix-addr</samp>&rsquo;</dt>
@@ -1115,6 +984,186 @@ to a locally defined function, foo, via its GOT slot.
 <samp>call-nop=prefix-<var>byte</var></samp> generates <code><var>byte</var> call foo</code>.
 <samp>call-nop=suffix-<var>byte</var></samp> generates <code>call foo <var>byte</var></code>.
 Supported for i386 and x86_64.
+</p>
+</dd>
+<dt>&lsquo;<samp>combreloc</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nocombreloc</samp>&rsquo;</dt>
+<dd><p>Combine multiple dynamic relocation sections and sort to improve
+dynamic symbol lookup caching.  Do not do this if &lsquo;<samp>nocombreloc</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>common</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nocommon</samp>&rsquo;</dt>
+<dd><p>Generate common symbols with STT_COMMON type during a relocatable
+link.  Use STT_OBJECT type if &lsquo;<samp>nocommon</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>common-page-size=<var>value</var></samp>&rsquo;</dt>
+<dd><p>Set the page size most commonly used to <var>value</var>.  Memory image
+layout will be optimized to minimize memory pages if the system is
+using pages of this size.
+</p>
+</dd>
+<dt>&lsquo;<samp>defs</samp>&rsquo;</dt>
+<dd><p>Disallows undefined symbols in object files.  Undefined symbols in
+shared libraries are still allowed.
+</p>
+</dd>
+<dt>&lsquo;<samp>dynamic-undefined-weak</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>nodynamic-undefined-weak</samp>&rsquo;</dt>
+<dd><p>Make undefined weak symbols dynamic when building a dynamic object,
+if they are referenced from a regular object file and not forced local
+by symbol visibility or versioning.  Do not make them dynamic if
+&lsquo;<samp>nodynamic-undefined-weak</samp>&rsquo;.  If neither option is given, a target
+may default to either option being in force, or make some other
+selection of undefined weak symbols dynamic.  Not all targets support
+these options.
+</p>
+</dd>
+<dt>&lsquo;<samp>execstack</samp>&rsquo;</dt>
+<dd><p>Marks the object as requiring executable stack.
+</p>
+</dd>
+<dt>&lsquo;<samp>global</samp>&rsquo;</dt>
+<dd><p>This option is only meaningful when building a shared object.  It makes
+the symbols defined by this shared object available for symbol resolution
+of subsequently loaded libraries.
+</p>
+</dd>
+<dt>&lsquo;<samp>globalaudit</samp>&rsquo;</dt>
+<dd><p>This option is only meaningful when building a dynamic executable.
+This option marks the executable as requiring global auditing by
+setting the <code>DF_1_GLOBAUDIT</code> bit in the <code>DT_FLAGS_1</code> dynamic
+tag.  Global auditing requires that any auditing library defined via
+the <samp>--depaudit</samp> or <samp>-P</samp> command line options be run for
+all dynamic objects loaded by the application.
+</p>
+</dd>
+<dt>&lsquo;<samp>ibtplt</samp>&rsquo;</dt>
+<dd><p>Generate Intel Indirect Branch Tracking (IBT) enabled PLT entries.
+Supported for Linux/i386 and Linux/x86_64.
+</p>
+</dd>
+<dt>&lsquo;<samp>ibt</samp>&rsquo;</dt>
+<dd><p>Generate GNU_PROPERTY_X86_FEATURE_1_IBT in .note.gnu.property section
+to indicate compatibility with IBT.  This also implies <samp>ibtplt</samp>.
+Supported for Linux/i386 and Linux/x86_64.
+</p>
+</dd>
+<dt>&lsquo;<samp>initfirst</samp>&rsquo;</dt>
+<dd><p>This option is only meaningful when building a shared object.
+It marks the object so that its runtime initialization will occur
+before the runtime initialization of any other objects brought into
+the process at the same time.  Similarly the runtime finalization of
+the object will occur after the runtime finalization of any other
+objects.
+</p>
+</dd>
+<dt>&lsquo;<samp>interpose</samp>&rsquo;</dt>
+<dd><p>Specify that the dynamic loader should modify its symbol search order
+so that symbols in this shared library interpose all other shared
+libraries not so marked.
+</p>
+</dd>
+<dt>&lsquo;<samp>lazy</samp>&rsquo;</dt>
+<dd><p>When generating an executable or shared library, mark it to tell the
+dynamic linker to defer function call resolution to the point when
+the function is called (lazy binding), rather than at load time.
+Lazy binding is the default.
+</p>
+</dd>
+<dt>&lsquo;<samp>loadfltr</samp>&rsquo;</dt>
+<dd><p>Specify that the object&rsquo;s filters be processed immediately at runtime.
+</p>
+</dd>
+<dt>&lsquo;<samp>max-page-size=<var>value</var></samp>&rsquo;</dt>
+<dd><p>Set the maximum memory page size supported to <var>value</var>.
+</p>
+</dd>
+<dt>&lsquo;<samp>muldefs</samp>&rsquo;</dt>
+<dd><p>Allow multiple definitions.
+</p>
+</dd>
+<dt>&lsquo;<samp>nocopyreloc</samp>&rsquo;</dt>
+<dd><p>Disable linker generated .dynbss variables used in place of variables
+defined in shared libraries.  May result in dynamic text relocations.
+</p>
+</dd>
+<dt>&lsquo;<samp>nodefaultlib</samp>&rsquo;</dt>
+<dd><p>Specify that the dynamic loader search for dependencies of this object
+should ignore any default library search paths.
+</p>
+</dd>
+<dt>&lsquo;<samp>nodelete</samp>&rsquo;</dt>
+<dd><p>Specify that the object shouldn&rsquo;t be unloaded at runtime.
+</p>
+</dd>
+<dt>&lsquo;<samp>nodlopen</samp>&rsquo;</dt>
+<dd><p>Specify that the object is not available to <code>dlopen</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>nodump</samp>&rsquo;</dt>
+<dd><p>Specify that the object can not be dumped by <code>dldump</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>noexecstack</samp>&rsquo;</dt>
+<dd><p>Marks the object as not requiring executable stack.
+</p>
+</dd>
+<dt>&lsquo;<samp>noextern-protected-data</samp>&rsquo;</dt>
+<dd><p>Don&rsquo;t treat protected data symbols as external when building a shared
+library.  This option overrides the linker backend default.  It can be
+used to work around incorrect relocations against protected data symbols
+generated by compiler.  Updates on protected data symbols by another
+module aren&rsquo;t visible to the resulting shared library.  Supported for
+i386 and x86-64.
+</p>
+</dd>
+<dt>&lsquo;<samp>noreloc-overflow</samp>&rsquo;</dt>
+<dd><p>Disable relocation overflow check.  This can be used to disable
+relocation overflow check if there will be no dynamic relocation
+overflow at run-time.  Supported for x86_64.
+</p>
+</dd>
+<dt>&lsquo;<samp>now</samp>&rsquo;</dt>
+<dd><p>When generating an executable or shared library, mark it to tell the
+dynamic linker to resolve all symbols when the program is started, or
+when the shared library is loaded by dlopen, instead of deferring
+function call resolution to the point when the function is first
+called.
+</p>
+</dd>
+<dt>&lsquo;<samp>origin</samp>&rsquo;</dt>
+<dd><p>Specify that the object requires &lsquo;<samp>$ORIGIN</samp>&rsquo; handling in paths.
+</p>
+</dd>
+<dt>&lsquo;<samp>relro</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>norelro</samp>&rsquo;</dt>
+<dd><p>Create an ELF <code>PT_GNU_RELRO</code> segment header in the object.  This
+specifies a memory segment that should be made read-only after
+relocation, if supported.  Specifying &lsquo;<samp>common-page-size</samp>&rsquo; smaller
+than the system page size will render this protection ineffective.
+Don&rsquo;t create an ELF <code>PT_GNU_RELRO</code> segment if &lsquo;<samp>norelro</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp>shstk</samp>&rsquo;</dt>
+<dd><p>Generate GNU_PROPERTY_X86_FEATURE_1_SHSTK in .note.gnu.property section
+to indicate compatibility with Intel Shadow Stack.  Supported for
+Linux/i386 and Linux/x86_64.
+</p>
+</dd>
+<dt>&lsquo;<samp>stack-size=<var>value</var></samp>&rsquo;</dt>
+<dd><p>Specify a stack size for an ELF <code>PT_GNU_STACK</code> segment.
+Specifying zero will override any default non-zero sized
+<code>PT_GNU_STACK</code> segment creation.
+</p>
+</dd>
+<dt>&lsquo;<samp>text</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>notext</samp>&rsquo;</dt>
+<dt>&lsquo;<samp>textoff</samp>&rsquo;</dt>
+<dd><p>Report an error if DT_TEXTREL is set, i.e., if the binary has dynamic
+relocations in read-only sections.  Don&rsquo;t report an error if
+&lsquo;<samp>notext</samp>&rsquo; or &lsquo;<samp>textoff</samp>&rsquo;.
 </p>
 </dd>
 </dl>
@@ -1358,6 +1407,19 @@ and also prevents any possible confusion over resolving to the wrong
 duplicate when there are many dynamic modules with specialized search
 paths for runtime symbol resolution.
 </p>
+<a name="index-group-allocation-in-linker-script"></a>
+<a name="index-section-groups"></a>
+<a name="index-COMDAT"></a>
+<a name="index-_002d_002dforce_002dgroup_002dallocation"></a>
+</dd>
+<dt><code>--force-group-allocation</code></dt>
+<dd><p>This option causes the linker to place section group members like
+normal input sections, and to delete the section groups.  This is the
+default behaviour for a final link but this option can be used to
+change the behaviour of a relocatable link (&lsquo;<samp>-r</samp>&rsquo;).  The script
+command <code>FORCE_GROUP_ALLOCATION</code> has the same
+effect. See <a href="Miscellaneous-Commands.html#Miscellaneous-Commands">Miscellaneous Commands</a>.
+</p>
 <a name="index-symbols_002c-from-command-line"></a>
 <a name="index-_002d_002ddefsym_003dsymbol_003dexp"></a>
 </dd>
@@ -1407,6 +1469,14 @@ doing.
 linker to be used at load-time.  This is only meaningful for ELF
 executables that contain dynamic relocations, and usually requires
 entry point code that is capable of processing these relocations.
+</p>
+<a name="index-_002d_002dembedded_002drelocs"></a>
+</dd>
+<dt><code>--embedded-relocs</code></dt>
+<dd><p>This option is similar to the <samp>--emit-relocs</samp> option except
+that the relocs are stored in a target specific section.  This option
+is only supported by the &lsquo;<samp>BFIN</samp>&rsquo;, &lsquo;<samp>CR16</samp>&rsquo; and <em>M68K</em>
+targets.
 </p>
 <a name="index-_002d_002dfatal_002dwarnings"></a>
 <a name="index-_002d_002dno_002dfatal_002dwarnings"></a>
@@ -1868,6 +1938,13 @@ patterns in the linker script.
 <dd><p>This option will apply <code>SORT_BY_ALIGNMENT</code> to all wildcard section
 patterns in the linker script.
 </p>
+<a name="index-_002d_002dspare_002ddynamic_002dtags"></a>
+</dd>
+<dt><code>--spare-dynamic-tags=<var>count</var></code></dt>
+<dd><p>This option specifies the number of empty slots to leave in the
+.dynamic section of ELF shared objects.  Empty slots may be needed by
+post processing tools, such as the prelinker.  The default is 5.
+</p>
 <a name="index-_002d_002dsplit_002dby_002dfile"></a>
 </dd>
 <dt><code>--split-by-file[=<var>size</var>]</code></dt>
@@ -1901,6 +1978,12 @@ as execution time and memory usage.
 <dd><p>Use <var>directory</var> as the location of the sysroot, overriding the
 configure-time default.  This option is only supported by linkers
 that were configured using <samp>--with-sysroot</samp>.
+</p>
+<a name="index-_002d_002dtask_002dlink"></a>
+</dd>
+<dt><code>--task-link</code></dt>
+<dd><p>This is used by COFF/PE based targets to create a task-linked object
+file where all of the global symbols have been converted to statics.
 </p>
 <a name="index-_002d_002dtraditional_002dformat"></a>
 <a name="index-traditional-format"></a>

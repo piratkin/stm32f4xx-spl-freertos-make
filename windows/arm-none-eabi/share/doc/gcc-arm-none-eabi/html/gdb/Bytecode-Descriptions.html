@@ -289,8 +289,10 @@ the item under the top item, etc.  If <var>n</var> exceeds the number of
 items on the stack, terminate with an error.
 </p>
 </dd>
-<dt><code>rot</code> (0x33): <var>a</var> <var>b</var> <var>c</var> =&gt; <var>c</var> <var>b</var> <var>a</var></dt>
-<dd><p>Rotate the top three items on the stack.
+<dt><code>rot</code> (0x33): <var>a</var> <var>b</var> <var>c</var> =&gt; <var>c</var> <var>a</var> <var>b</var></dt>
+<dd><p>Rotate the top three items on the stack.  The top item (c) becomes the third
+item, the next-to-top item (b) becomes the top item and the third item (a) from
+the top becomes the next-to-top item.
 </p>
 </dd>
 <dt><code>if_goto</code> (0x20) <var>offset</var>: <var>a</var> &rArr;</dt>

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -73,27 +73,30 @@ Next: <a href="Location-Counter.html#Location-Counter" accesskey="n" rel="next">
 <p>Orphan sections are sections present in the input files which
 are not explicitly placed into the output file by the linker
 script.  The linker will still copy these sections into the
-output file, but it has to guess as to where they should be
-placed.  The linker uses a simple heuristic to do this.  It
-attempts to place orphan sections after non-orphan sections of the
-same attribute, such as code vs data, loadable vs non-loadable, etc.
-If there is not enough room to do this then it places
-at the end of the file.
+output file by either finding, or creating a suitable output section
+in which to place the orphaned input section.
 </p>
-<p>For ELF targets, the attribute of the section includes section type as
-well as section flag.
+<p>If the name of an orphaned input section exactly matches the name of
+an existing output section, then the orphaned input section will be
+placed at the end of that output section.
+</p>
+<p>If there is no output section with a matching name then new output
+sections will be created.  Each new output section will have the same
+name as the orphan section placed within it.  If there are multiple
+orphan sections with the same name, these will all be combined into
+one new output section.
+</p>
+<p>If new output sections are created to hold orphaned input sections,
+then the linker must decide where to place these new output sections
+in relation to existing output sections.  On most modern targets, the
+linker attempts to place orphan sections after sections of the same
+attribute, such as code vs data, loadable vs non-loadable, etc.  If no
+sections with matching attributes are found, or your target lacks this
+support, the orphan section is placed at the end of the file.
 </p>
 <p>The command line options &lsquo;<samp>--orphan-handling</samp>&rsquo; and &lsquo;<samp>--unique</samp>&rsquo;
 (see <a href="Options.html#Options">Command Line Options</a>) can be used to control which
 output sections an orphan is placed in.
-</p>
-<p>If an orphaned section&rsquo;s name is representable as a C identifier then
-the linker will automatically see <a href="PROVIDE.html#PROVIDE">PROVIDE</a> two symbols:
-__start_SECNAME and __stop_SECNAME, where SECNAME is the name of the
-section.  These indicate the start address and end address of the
-orphaned section respectively.  Note: most section names are not
-representable as C identifiers because they contain a &lsquo;<samp>.</samp>&rsquo;
-character.
 </p>
 
 

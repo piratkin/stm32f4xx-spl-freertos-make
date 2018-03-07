@@ -120,12 +120,14 @@ breakpoint you want to change.  Each breakpoint may be <em>enabled</em> or
 enable it again.
 </p>
 <a name="index-breakpoint-ranges"></a>
+<a name="index-breakpoint-lists"></a>
 <a name="index-ranges-of-breakpoints"></a>
-<p>Some <small>GDB</small> commands accept a range of breakpoints on which to
-operate.  A breakpoint range is either a single breakpoint number, like
-&lsquo;<samp>5</samp>&rsquo;, or two such numbers, in increasing order, separated by a
-hyphen, like &lsquo;<samp>5-7</samp>&rsquo;.  When a breakpoint range is given to a command,
-all breakpoints in that range are operated on.
+<a name="index-lists-of-breakpoints"></a>
+<p>Some <small>GDB</small> commands accept a space-separated list of breakpoints
+on which to operate.  A list element can be either a single breakpoint number,
+like &lsquo;<samp>5</samp>&rsquo;, or a range of such numbers, like &lsquo;<samp>5-7</samp>&rsquo;.
+When a breakpoint list is given to a command, all breakpoints in that list
+are operated on.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="Set-Breaks.html#Set-Breaks" accesskey="1">Set Breaks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Setting breakpoints

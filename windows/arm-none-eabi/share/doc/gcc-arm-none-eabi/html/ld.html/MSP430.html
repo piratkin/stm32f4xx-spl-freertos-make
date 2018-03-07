@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -103,8 +103,40 @@ in this section will not be uploaded to the MPU.
 </p></dd>
 </dl>
 
+<dl compact="compact">
+<dd><a name="index-MSP430-Options"></a>
+<a name="index-_002d_002dcode_002dregion"></a>
+</dd>
+<dt><samp>--code-region=[either,lower,upper,none]</samp></dt>
+<dd><p>This will transform .text* sections to [either,lower,upper].text* sections. The
+argument passed to GCC for -mcode-region is propagated to the linker
+using this option.
+</p>
+<a name="index-_002d_002ddata_002dregion"></a>
+</dd>
+<dt><samp>--data-region=[either,lower,upper,none]</samp></dt>
+<dd><p>This will transform .data*, .bss* and .rodata* sections to
+[either,lower,upper].[data,bss,rodata]* sections. The argument passed to GCC
+for -mdata-region is propagated to the linker using this option.
+</p>
+<a name="index-_002d_002ddisable_002dsec_002dtransformation"></a>
+</dd>
+<dt><samp>--disable-sec-transformation</samp></dt>
+<dd><p>Prevent the transformation of sections as specified by the <code>--code-region</code>
+and <code>--data-region</code> options.
+This is useful if you are compiling and linking using a single call to the GCC
+wrapper, and want to compile the source files using -m[code,data]-region but
+not transform the sections for prebuilt libraries and objects.
+</p></dd>
+</dl>
 
 
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="NDS32.html#NDS32" accesskey="n" rel="next">NDS32</a>, Previous: <a href="MMIX.html#MMIX" accesskey="p" rel="prev">MMIX</a>, Up: <a href="Machine-Dependent.html#Machine-Dependent" accesskey="u" rel="up">Machine Dependent</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="LD-Index.html#LD-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

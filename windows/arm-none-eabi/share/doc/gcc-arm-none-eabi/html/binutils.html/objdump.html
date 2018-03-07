@@ -96,11 +96,8 @@ Next: <a href="ranlib.html#ranlib" accesskey="n" rel="next">ranlib</a>, Previous
         [<samp>-r</samp>|<samp>--reloc</samp>]
         [<samp>-R</samp>|<samp>--dynamic-reloc</samp>]
         [<samp>-s</samp>|<samp>--full-contents</samp>]
-        [<samp>-W[lLiaprmfFsoRt]</samp>|
-         <samp>--dwarf</samp>[=rawline,=decodedline,=info,=abbrev,=pubnames]
-                 [=aranges,=macro,=frames,=frames-interp,=str,=loc]
-                 [=Ranges,=pubtypes,=trace_info,=trace_abbrev]
-                 [=trace_aranges,=gdb_index]
+        [<samp>-W[lLiaprmfFsoRtUuTgAckK]</samp>|
+         <samp>--dwarf</samp>[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]
         [<samp>-G</samp>|<samp>--stabs</samp>]
         [<samp>-t</samp>|<samp>--syms</samp>]
         [<samp>-T</samp>|<samp>--dynamic-syms</samp>]
@@ -352,6 +349,18 @@ special QuarkSE-EM instructions, <samp>fpuda</samp> selects the printing
 of double precision assist instructions, <samp>fpus</samp> selects the
 printing of FPU single precision FP instructions, while <samp>fpud</samp>
 selects the printing of FPU souble precision FP instructions.
+Additionally, one can choose to have all the immediates printed in
+hexadecimal using <samp>hex</samp>.  By default, the short immediates are
+printed using the decimal representation, while the long immediate
+values are printed as hexadecimal.
+</p>
+<p><samp>cpu=...</samp> allows to enforce a particular ISA when disassembling
+instructions, overriding the <samp>-m</samp> value or whatever is in the ELF file.
+This might be useful to select ARC EM or HS ISA, because architecture is same
+for those and disassembler relies on private ELF header data to decide if code
+is for EM or HS.  This option might be specified multiple times - only the
+latest value will be used.  Valid values are same as for the assembler
+<samp>-mcpu=...</samp> option.
 </p>
 <p>If the target is an ARM architecture then this switch can be used to
 select which register name set is used during disassembler.  Specifying
@@ -416,12 +425,34 @@ suffix even when the suffix could be inferred by the operands.
 </p></dd>
 </dl>
 
-<p>For PowerPC, <samp>booke</samp> controls the disassembly of BookE
-instructions.  <samp>32</samp> and <samp>64</samp> select PowerPC and
-PowerPC64 disassembly, respectively.  <samp>e300</samp> selects
-disassembly for the e300 family.  <samp>440</samp> selects disassembly for
-the PowerPC 440.  <samp>ppcps</samp> selects disassembly for the paired
-single instructions of the PPC750CL.
+<p>For PowerPC, the <samp>-M</samp> argument <samp>raw</samp> selects
+disasssembly of hardware insns rather than aliases.  For example, you
+will see <code>rlwinm</code> rather than <code>clrlwi</code>, and <code>addi</code>
+rather than <code>li</code>.  All of the <samp>-m</samp> arguments for
+<code>gas</code> that select a CPU are supported.  These are:
+<samp>403</samp>, <samp>405</samp>, <samp>440</samp>, <samp>464</samp>, <samp>476</samp>,
+<samp>601</samp>, <samp>603</samp>, <samp>604</samp>, <samp>620</samp>, <samp>7400</samp>,
+<samp>7410</samp>, <samp>7450</samp>, <samp>7455</samp>, <samp>750cl</samp>,
+<samp>821</samp>, <samp>850</samp>, <samp>860</samp>, <samp>a2</samp>, <samp>booke</samp>,
+<samp>booke32</samp>, <samp>cell</samp>, <samp>com</samp>, <samp>e200z4</samp>,
+<samp>e300</samp>, <samp>e500</samp>, <samp>e500mc</samp>, <samp>e500mc64</samp>,
+<samp>e500x2</samp>, <samp>e5500</samp>, <samp>e6500</samp>, <samp>efs</samp>,
+<samp>power4</samp>, <samp>power5</samp>, <samp>power6</samp>, <samp>power7</samp>,
+<samp>power8</samp>, <samp>power9</samp>, <samp>ppc</samp>, <samp>ppc32</samp>,
+<samp>ppc64</samp>, <samp>ppc64bridge</samp>, <samp>ppcps</samp>, <samp>pwr</samp>,
+<samp>pwr2</samp>, <samp>pwr4</samp>, <samp>pwr5</samp>, <samp>pwr5x</samp>,
+<samp>pwr6</samp>, <samp>pwr7</samp>, <samp>pwr8</samp>, <samp>pwr9</samp>,
+<samp>pwrx</samp>, <samp>titan</samp>, and <samp>vle</samp>.
+<samp>32</samp> and <samp>64</samp> modify the default or a prior CPU
+selection, disabling and enabling 64-bit insns respectively.  In
+addition, <samp>altivec</samp>, <samp>any</samp>, <samp>htm</samp>, <samp>vsx</samp>,
+and <samp>spe</samp> add capabilities to a previous <em>or later</em> CPU
+selection.  <samp>any</samp> will disassemble any opcode known to
+binutils, but in cases where an opcode has two different meanings or
+different arguments, you may not see the disassembly you expect.
+If you disassemble without giving a CPU selection, a default will be
+chosen from information gleaned by BFD from the object files headers,
+but the result again may not be as you expect.
 </p>
 <p>For MIPS, this option controls the printing of instruction mnemonic
 names and register names in disassembled instructions.  Multiple
@@ -593,28 +624,155 @@ This is the default when <samp>--prefix-addresses</samp> is used.
 instructions.
 </p>
 </dd>
-<dt><code>-W[lLiaprmfFsoRt]</code></dt>
-<dt><code>--dwarf[=rawline,=decodedline,=info,=abbrev,=pubnames]</code></dt>
-<dt><code>--dwarf[=aranges,=macro,=frames,=frames-interp,=str,=loc]</code></dt>
-<dt><code>--dwarf[=Ranges,=pubtypes,=trace_info,=trace_abbrev]</code></dt>
-<dt><code>--dwarf[=trace_aranges,=gdb_index]</code></dt>
-<dd><a name="index-DWARF"></a>
-<a name="index-debug-symbols"></a>
-<p>Displays the contents of the debug sections in the file, if any are
-present.  If one of the optional letters or words follows the switch
-then only data found in those specific sections will be dumped.
+<dt><code>-W[lLiaprmfFsoRtUuTgAckK]</code></dt>
+<dt><code>--dwarf[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames-interp,=str,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow-links]</code></dt>
+<dd>
+<p>Displays the contents of the DWARF debug sections in the file, if any
+are present.  Compressed debug sections are automatically decompressed
+(temporarily) before they are displayed.  If one or more of the
+optional letters or words follows the switch then only those type(s)
+of data will be dumped.  The letters and words refer to the following
+information:
 </p>
-<p>Note that there is no single letter option to display the content of
-trace sections or .gdb_index.
+<dl compact="compact">
+<dt><code>a</code></dt>
+<dt><code>=abbrev</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_abbrev</samp>&rsquo; section.
 </p>
-<p>Note: the output from the <samp>=info</samp> option can also be affected
-by the options <samp>--dwarf-depth</samp>, the <samp>--dwarf-start</samp> and
-the <samp>--dwarf-check</samp>.
+</dd>
+<dt><code>A</code></dt>
+<dt><code>=addr</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_addr</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>c</code></dt>
+<dt><code>=cu_index</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_cu_index</samp>&rsquo; and/or
+&lsquo;<samp>.debug_tu_index</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>f</code></dt>
+<dt><code>=frames</code></dt>
+<dd><p>Display the raw contents of a &lsquo;<samp>.debug_frame</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>F</code></dt>
+<dt><code>=frame-interp</code></dt>
+<dd><p>Display the interpreted contents of a &lsquo;<samp>.debug_frame</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>g</code></dt>
+<dt><code>=gdb_index</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.gdb_index</samp>&rsquo; and/or
+&lsquo;<samp>.debug_names</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>i</code></dt>
+<dt><code>=info</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_info</samp>&rsquo; section.  Note: the
+output from this option can also be restricted by the use of the 
+<samp>--dwarf-depth</samp> and <samp>--dwarf-start</samp> options.
+</p>
+</dd>
+<dt><code>k</code></dt>
+<dt><code>=links</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.gnu_debuglink</samp>&rsquo; and/or
+&lsquo;<samp>.gnu_debugaltlink</samp>&rsquo; sections.  Also displays the link to a
+separate dwarf object file (dwo), if one is specified by the 
+DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
+&lsquo;<samp>.debug_info</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>K</code></dt>
+<dt><code>=follow-links</code></dt>
+<dd><p>Display the contents of any selected debug sections that are found in
+a linked, separate debug info file.  This can result in multiple
+versions of the same debug section being displayed if both the main
+file and the separate debug info file contain sections with the same
+name.
+</p>
+<p>In addition, when displaying DWARF attributes, if a form is found that
+references the separate debug info file, then the referenced contents
+will also be displayed.
+</p>
+</dd>
+<dt><code>l</code></dt>
+<dt><code>=rawline</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_line</samp>&rsquo; section in a raw
+format.
+</p>
+</dd>
+<dt><code>L</code></dt>
+<dt><code>=decodedline</code></dt>
+<dd><p>Displays the interpreted contents of the &lsquo;<samp>.debug_line</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>m</code></dt>
+<dt><code>=macro</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_macro</samp>&rsquo; and/or
+&lsquo;<samp>.debug_macinfo</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>o</code></dt>
+<dt><code>=loc</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_loc</samp>&rsquo; and/or
+&lsquo;<samp>.debug_loclists</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>p</code></dt>
+<dt><code>=pubnames</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_pubnames</samp>&rsquo; and/or
+&lsquo;<samp>.debug_gnu_pubnames</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>r</code></dt>
+<dt><code>=aranges</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_aranges</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>R</code></dt>
+<dt><code>=Ranges</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_ranges</samp>&rsquo; and/or
+&lsquo;<samp>.debug_rnglists</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>s</code></dt>
+<dt><code>=str</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_str</samp>&rsquo;, &lsquo;<samp>.debug_line_str</samp>&rsquo;
+and/or &lsquo;<samp>.debug_str_offsets</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>t</code></dt>
+<dt><code>=pubtype</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.debug_pubtypes</samp>&rsquo; and/or
+&lsquo;<samp>.debug_gnu_pubtypes</samp>&rsquo; sections.
+</p>
+</dd>
+<dt><code>T</code></dt>
+<dt><code>=trace_aranges</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.trace_aranges</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>u</code></dt>
+<dt><code>=trace_abbrev</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.trace_abbrev</samp>&rsquo; section.
+</p>
+</dd>
+<dt><code>U</code></dt>
+<dt><code>=trace_info</code></dt>
+<dd><p>Displays the contents of the &lsquo;<samp>.trace_info</samp>&rsquo; section.
+</p>
+</dd>
+</dl>
+
+<p>Note: displaying the contents of &lsquo;<samp>.debug_static_funcs</samp>&rsquo;,
+&lsquo;<samp>.debug_static_vars</samp>&rsquo; and &lsquo;<samp>debug_weaknames</samp>&rsquo; sections is not
+currently supported.
 </p>
 </dd>
 <dt><code>--dwarf-depth=<var>n</var></code></dt>
 <dd><p>Limit the dump of the <code>.debug_info</code> section to <var>n</var> children.
-This is only useful with <samp>--dwarf=info</samp>.  The default is
+This is only useful with <samp>--debug-dump=info</samp>.  The default is
 to print all DIEs; the special value 0 for <var>n</var> will also have this
 effect.
 </p>
@@ -624,7 +782,7 @@ levels will not be printed.  The range for <var>n</var> is zero-based.
 </dd>
 <dt><code>--dwarf-start=<var>n</var></code></dt>
 <dd><p>Print only DIEs beginning with the DIE numbered <var>n</var>.  This is only
-useful with <samp>--dwarf=info</samp>.
+useful with <samp>--debug-dump=info</samp>.
 </p>
 <p>If specified, this option will suppress printing of any header
 information and all DIEs before the DIE numbered <var>n</var>.  Only
@@ -632,6 +790,7 @@ siblings and children of the specified DIE will be printed.
 </p>
 <p>This can be used in conjunction with <samp>--dwarf-depth</samp>.
 </p>
+
 </dd>
 <dt><code>--dwarf-check</code></dt>
 <dd><p>Enable additional checks for consistency of Dwarf information.
@@ -641,7 +800,7 @@ siblings and children of the specified DIE will be printed.
 <dt><code>--stabs</code></dt>
 <dd><a name="index-stab"></a>
 <a name="index-_002estab"></a>
-<a name="index-debug-symbols-1"></a>
+<a name="index-debug-symbols"></a>
 <a name="index-ELF-object-file-format"></a>
 <p>Display the full contents of any sections requested.  Display the
 contents of the .stab and .stab.index and .stab.excl sections from an

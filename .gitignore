@@ -3,4 +3,7 @@
 *.elf 
 *.hex
 *.bin
+#*#
+.swp
+.tmp
 /repo

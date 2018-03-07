@@ -66,8 +66,8 @@ ul.no-bullet {list-style: none}
 Previous: <a href="V850-Directives.html#V850-Directives" accesskey="p" rel="prev">V850 Directives</a>, Up: <a href="V850_002dDependent.html#V850_002dDependent" accesskey="u" rel="up">V850-Dependent</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="AS-Index.html#AS-Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<a name="Opcodes-18"></a>
-<h4 class="subsection">9.48.5 Opcodes</h4>
+<a name="Opcodes-19"></a>
+<h4 class="subsection">9.49.5 Opcodes</h4>
 
 <a name="index-V850-opcodes"></a>
 <a name="index-opcodes-for-V850"></a>
@@ -141,7 +141,7 @@ register 6.
 </dd>
 <dt><code>sdaoff()</code></dt>
 <dd><p>Computes the offset of the named variable from the start of the Small
-Data Area (whoes address is held in register 4, the GP register) and
+Data Area (whose address is held in register 4, the GP register) and
 stores the result as a 16 bit signed value in the immediate operand
 field of the given instruction.  For example:
 </p>
@@ -159,7 +159,7 @@ command line option].
 </dd>
 <dt><code>tdaoff()</code></dt>
 <dd><p>Computes the offset of the named variable from the start of the Tiny
-Data Area (whoes address is held in register 30, the EP register) and
+Data Area (whose address is held in register 30, the EP register) and
 stores the result as a 4,5, 7 or 8 bit unsigned value in the immediate
 operand field of the given instruction.  For example:
 </p>
@@ -191,14 +191,14 @@ the offsets are signed).
 </dd>
 <dt><code>ctoff()</code></dt>
 <dd><p>Computes the offset of the named variable from the start of the Call
-Table Area (whoes address is helg in system register 20, the CTBP
+Table Area (whose address is held in system register 20, the CTBP
 register) and stores the result a 6 or 16 bit unsigned value in the
 immediate field of then given instruction or piece of data.  For
 example:
 </p>
 <p>&lsquo;<samp>callt ctoff(table_func1)</samp>&rsquo;
 </p>
-<p>will put the call the function whoes address is held in the call table
+<p>will put the call the function whose address is held in the call table
 at the location labeled &rsquo;table_func1&rsquo;.
 </p>
 <a name="index-longcall-pseudo_002dop_002c-V850"></a>

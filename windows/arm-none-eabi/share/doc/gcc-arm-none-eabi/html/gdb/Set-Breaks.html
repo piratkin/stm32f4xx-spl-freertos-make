@@ -216,8 +216,8 @@ optionally be surrounded by spaces.
 <a name="index-info-breakpoints"></a>
 <a name="index-_0024_005f-and-info-breakpoints"></a>
 </dd>
-<dt><code>info breakpoints <span class="roman">[</span><var>n</var>&hellip;<span class="roman">]</span></code></dt>
-<dt><code>info break <span class="roman">[</span><var>n</var>&hellip;<span class="roman">]</span></code></dt>
+<dt><code>info breakpoints <span class="roman">[</span><var>list</var>&hellip;<span class="roman">]</span></code></dt>
+<dt><code>info break <span class="roman">[</span><var>list</var>&hellip;<span class="roman">]</span></code></dt>
 <dd><p>Print a table of all breakpoints, watchpoints, and catchpoints set and
 not deleted.  Optional argument <var>n</var> means print information only
 about the specified breakpoint(s) (or watchpoint(s) or catchpoint(s)).
@@ -327,15 +327,17 @@ locations belong.  The number column for a location is of the form
 1.2                         y    0x080486ca in void foo&lt;double&gt;() at t.cc:8
 </pre></div>
 
-<p>Each location can be individually enabled or disabled by passing
+<p>You cannot delete the individual locations from a breakpoint.  However,
+each location can be individually enabled or disabled by passing
 <var>breakpoint-number</var>.<var>location-number</var> as argument to the
-<code>enable</code> and <code>disable</code> commands.  Note that you cannot
-delete the individual locations from the list, you can only delete the
-entire list of locations that belong to their parent breakpoint (with
-the <kbd>delete <var>num</var></kbd> command, where <var>num</var> is the number of
-the parent breakpoint, 1 in the above example).  Disabling or enabling
-the parent breakpoint (see <a href="Disabling.html#Disabling">Disabling</a>) affects all of the locations
-that belong to that breakpoint.
+<code>enable</code> and <code>disable</code> commands.  It&rsquo;s also possible to
+<code>enable</code> and <code>disable</code> a range of <var>location-number</var>
+locations using a <var>breakpoint-number</var> and two <var>location-number</var>s,
+in increasing order, separated by a hyphen, like
+<kbd><var>breakpoint-number</var>.<var>location-number1</var>-<var>location-number2</var></kbd>,
+in which case <small>GDB</small> acts on all the locations in the range (inclusive).
+Disabling or enabling the parent breakpoint (see <a href="Disabling.html#Disabling">Disabling</a>) affects
+all of the locations that belong to that breakpoint.
 </p>
 <a name="index-pending-breakpoints"></a>
 <p>It&rsquo;s quite common to have a breakpoint inside a shared library.
@@ -407,7 +409,7 @@ breakpoints set by commands like <code>next</code> and <code>finish</code>.  For
 breakpoints set with <code>hbreak</code>, <small>GDB</small> will always use hardware
 breakpoints.
 </p>
-<p>You can control this automatic behaviour with the following commands::
+<p>You can control this automatic behaviour with the following commands:
 </p>
 <a name="index-set-breakpoint-auto_002dhw"></a>
 <a name="index-show-breakpoint-auto_002dhw"></a>

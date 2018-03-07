@@ -108,7 +108,7 @@ dynamic printfs immediately.  (If you need individual control over the
 print commands, simply define normal breakpoints with
 explicitly-supplied command lists.)
 </p>
-</dd>
+<dl compact="compact">
 <dt><code>gdb</code></dt>
 <dd><a name="index-dprintf_002dstyle-gdb"></a>
 <p>Handle the output using the <small>GDB</small> <code>printf</code> command.
@@ -125,7 +125,9 @@ explicitly-supplied command lists.)
 <p>Have the remote debugging agent (such as <code>gdbserver</code>) handle
 the output itself.  This style is only available for agents that
 support running commands on the target.
-</p>
+</p></dd>
+</dl>
+
 </dd>
 <dt><code>set dprintf-function <var>function</var></code></dt>
 <dd><p>Set the function to call if the dprintf style is <code>call</code>.  By

@@ -107,11 +107,24 @@ quadruple word).
 <a name="index-encoding-options_002c-i386"></a>
 <a name="index-encoding-options_002c-x86_002d64"></a>
 
-<p>Different encoding options can be specified via optional mnemonic
-suffix.  &lsquo;<samp>.s</samp>&rsquo; suffix swaps 2 register operands in encoding when
-moving from one register to another.  &lsquo;<samp>.d8</samp>&rsquo; or &lsquo;<samp>.d32</samp>&rsquo; suffix
-prefers 8bit or 32bit displacement in encoding.
+<p>Different encoding options can be specified via pseudo prefixes:
 </p>
+<ul>
+<li> &lsquo;<samp>{disp8}</samp>&rsquo; &ndash; prefer 8-bit displacement.
+
+</li><li> &lsquo;<samp>{disp32}</samp>&rsquo; &ndash; prefer 32-bit displacement.
+
+</li><li> &lsquo;<samp>{load}</samp>&rsquo; &ndash; prefer load-form instruction.
+
+</li><li> &lsquo;<samp>{store}</samp>&rsquo; &ndash; prefer store-form instruction.
+
+</li><li> &lsquo;<samp>{vex2}</samp>&rsquo; &ndash; prefer 2-byte VEX prefix for VEX instruction.
+
+</li><li> &lsquo;<samp>{vex3}</samp>&rsquo; &ndash; prefer 3-byte VEX prefix for VEX instruction.
+
+</li><li> &lsquo;<samp>{evex}</samp>&rsquo; &ndash;  encode with EVEX prefix.
+</li></ul>
+
 <a name="index-conversion-instructions_002c-i386"></a>
 <a name="index-i386-conversion-instructions"></a>
 <a name="index-conversion-instructions_002c-x86_002d64"></a>

@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -108,8 +108,9 @@ for in the <em>sysroot prefix</em>.  Otherwise, the linker will try to
 open the file in the current directory.  If it is not found, the
 linker will search through the archive library search path.
 The <em>sysroot prefix</em> can also be forced by specifying <code>=</code>
-as the first character in the filename path.  See also the
-description of &lsquo;<samp>-L</samp>&rsquo; in <a href="Options.html#Options">Command Line Options</a>.
+as the first character in the filename path, or prefixing the filename
+path with <code>$SYSROOT</code>.  See also the description of &lsquo;<samp>-L</samp>&rsquo; in
+<a href="Options.html#Options">Command Line Options</a>.
 </p>
 <p>If you use &lsquo;<samp>INPUT (-l<var>file</var>)</samp>&rsquo;, <code>ld</code> will transform the
 name to <code>lib<var>file</var>.a</code>, as with the command line argument

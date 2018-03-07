@@ -2,7 +2,7 @@
 <html>
 <!-- This file documents the BFD library.
 
-Copyright (C) 1991-2016 Free Software Foundation, Inc.
+Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -617,6 +617,11 @@ to compensate for the borrow when the low bits are added.
 <dt><a name="index-BFD_005fRELOC_005fFT32_005f20"></a>: <strong>BFD_RELOC_FT32_20</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fFT32_005f17"></a>: <strong>BFD_RELOC_FT32_17</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fFT32_005f18"></a>: <strong>BFD_RELOC_FT32_18</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fFT32_005fRELAX"></a>: <strong>BFD_RELOC_FT32_RELAX</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fFT32_005fSC0"></a>: <strong>BFD_RELOC_FT32_SC0</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fFT32_005fSC1"></a>: <strong>BFD_RELOC_FT32_SC1</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fFT32_005f15"></a>: <strong>BFD_RELOC_FT32_15</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fFT32_005fDIFF32"></a>: <strong>BFD_RELOC_FT32_DIFF32</strong></dt>
 <dd><p>FT32 ELF relocations.
 </p></dd></dl>
 <dl>
@@ -869,6 +874,7 @@ instruction.
 <dt><a name="index-BFD_005fRELOC_005fPPC_005fVLE_005fSDAREL_005fHI16D"></a>: <strong>BFD_RELOC_PPC_VLE_SDAREL_HI16D</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fPPC_005fVLE_005fSDAREL_005fHA16A"></a>: <strong>BFD_RELOC_PPC_VLE_SDAREL_HA16A</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fPPC_005fVLE_005fSDAREL_005fHA16D"></a>: <strong>BFD_RELOC_PPC_VLE_SDAREL_HA16D</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPPC_005f16DX_005fHA"></a>: <strong>BFD_RELOC_PPC_16DX_HA</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fPPC_005fREL16DX_005fHA"></a>: <strong>BFD_RELOC_PPC_REL16DX_HA</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fPPC64_005fHIGHER"></a>: <strong>BFD_RELOC_PPC64_HIGHER</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fPPC64_005fHIGHER_005fS"></a>: <strong>BFD_RELOC_PPC64_HIGHER_S</strong></dt>
@@ -1276,13 +1282,14 @@ pc-relative or some form of GOT-indirect relocation.
 <dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fU8"></a>: <strong>BFD_RELOC_AC_SECTOFF_U8</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fU8_005f1"></a>: <strong>BFD_RELOC_AC_SECTOFF_U8_1</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fU8_005f2"></a>: <strong>BFD_RELOC_AC_SECTOFF_U8_2</strong></dt>
-<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTFOFF_005fS9"></a>: <strong>BFD_RELOC_AC_SECTFOFF_S9</strong></dt>
-<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTFOFF_005fS9_005f1"></a>: <strong>BFD_RELOC_AC_SECTFOFF_S9_1</strong></dt>
-<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTFOFF_005fS9_005f2"></a>: <strong>BFD_RELOC_AC_SECTFOFF_S9_2</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fS9"></a>: <strong>BFD_RELOC_AC_SECTOFF_S9</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fS9_005f1"></a>: <strong>BFD_RELOC_AC_SECTOFF_S9_1</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fAC_005fSECTOFF_005fS9_005f2"></a>: <strong>BFD_RELOC_AC_SECTOFF_S9_2</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fSECTOFF_005fME_005f1"></a>: <strong>BFD_RELOC_ARC_SECTOFF_ME_1</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fSECTOFF_005fME_005f2"></a>: <strong>BFD_RELOC_ARC_SECTOFF_ME_2</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fSECTOFF_005f1"></a>: <strong>BFD_RELOC_ARC_SECTOFF_1</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fSECTOFF_005f2"></a>: <strong>BFD_RELOC_ARC_SECTOFF_2</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fARC_005fSDA_005f12"></a>: <strong>BFD_RELOC_ARC_SDA_12</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fSDA16_005fST2"></a>: <strong>BFD_RELOC_ARC_SDA16_ST2</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005f32_005fPCREL"></a>: <strong>BFD_RELOC_ARC_32_PCREL</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fPC32"></a>: <strong>BFD_RELOC_ARC_PC32</strong></dt>
@@ -1310,6 +1317,7 @@ pc-relative or some form of GOT-indirect relocation.
 <dt><a name="index-BFD_005fRELOC_005fARC_005fS25W_005fPCREL_005fPLT"></a>: <strong>BFD_RELOC_ARC_S25W_PCREL_PLT</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fS21H_005fPCREL_005fPLT"></a>: <strong>BFD_RELOC_ARC_S21H_PCREL_PLT</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fARC_005fNPS_005fCMEM16"></a>: <strong>BFD_RELOC_ARC_NPS_CMEM16</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fARC_005fJLI_005fSECTOFF"></a>: <strong>BFD_RELOC_ARC_JLI_SECTOFF</strong></dt>
 <dd><p>ARC relocs.
 </p></dd></dl>
 <dl>
@@ -2431,6 +2439,57 @@ number for the IN and OUT instructions
 number for the SBIC, SBIS, SBI and CBI instructions
 </p></dd></dl>
 <dl>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fHI20"></a>: <strong>BFD_RELOC_RISCV_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fPCREL_005fHI20"></a>: <strong>BFD_RELOC_RISCV_PCREL_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fPCREL_005fLO12_005fI"></a>: <strong>BFD_RELOC_RISCV_PCREL_LO12_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fPCREL_005fLO12_005fS"></a>: <strong>BFD_RELOC_RISCV_PCREL_LO12_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fLO12_005fI"></a>: <strong>BFD_RELOC_RISCV_LO12_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fLO12_005fS"></a>: <strong>BFD_RELOC_RISCV_LO12_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fGPREL12_005fI"></a>: <strong>BFD_RELOC_RISCV_GPREL12_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fGPREL12_005fS"></a>: <strong>BFD_RELOC_RISCV_GPREL12_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fHI20"></a>: <strong>BFD_RELOC_RISCV_TPREL_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fLO12_005fI"></a>: <strong>BFD_RELOC_RISCV_TPREL_LO12_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fLO12_005fS"></a>: <strong>BFD_RELOC_RISCV_TPREL_LO12_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fADD"></a>: <strong>BFD_RELOC_RISCV_TPREL_ADD</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fCALL"></a>: <strong>BFD_RELOC_RISCV_CALL</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fCALL_005fPLT"></a>: <strong>BFD_RELOC_RISCV_CALL_PLT</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fADD8"></a>: <strong>BFD_RELOC_RISCV_ADD8</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fADD16"></a>: <strong>BFD_RELOC_RISCV_ADD16</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fADD32"></a>: <strong>BFD_RELOC_RISCV_ADD32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fADD64"></a>: <strong>BFD_RELOC_RISCV_ADD64</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSUB8"></a>: <strong>BFD_RELOC_RISCV_SUB8</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSUB16"></a>: <strong>BFD_RELOC_RISCV_SUB16</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSUB32"></a>: <strong>BFD_RELOC_RISCV_SUB32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSUB64"></a>: <strong>BFD_RELOC_RISCV_SUB64</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fGOT_005fHI20"></a>: <strong>BFD_RELOC_RISCV_GOT_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fGOT_005fHI20"></a>: <strong>BFD_RELOC_RISCV_TLS_GOT_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fGD_005fHI20"></a>: <strong>BFD_RELOC_RISCV_TLS_GD_HI20</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fJMP"></a>: <strong>BFD_RELOC_RISCV_JMP</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fDTPMOD32"></a>: <strong>BFD_RELOC_RISCV_TLS_DTPMOD32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fDTPREL32"></a>: <strong>BFD_RELOC_RISCV_TLS_DTPREL32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fDTPMOD64"></a>: <strong>BFD_RELOC_RISCV_TLS_DTPMOD64</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fDTPREL64"></a>: <strong>BFD_RELOC_RISCV_TLS_DTPREL64</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fTPREL32"></a>: <strong>BFD_RELOC_RISCV_TLS_TPREL32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTLS_005fTPREL64"></a>: <strong>BFD_RELOC_RISCV_TLS_TPREL64</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fALIGN"></a>: <strong>BFD_RELOC_RISCV_ALIGN</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fRVC_005fBRANCH"></a>: <strong>BFD_RELOC_RISCV_RVC_BRANCH</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fRVC_005fJUMP"></a>: <strong>BFD_RELOC_RISCV_RVC_JUMP</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fRVC_005fLUI"></a>: <strong>BFD_RELOC_RISCV_RVC_LUI</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fGPREL_005fI"></a>: <strong>BFD_RELOC_RISCV_GPREL_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fGPREL_005fS"></a>: <strong>BFD_RELOC_RISCV_GPREL_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fI"></a>: <strong>BFD_RELOC_RISCV_TPREL_I</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fTPREL_005fS"></a>: <strong>BFD_RELOC_RISCV_TPREL_S</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fRELAX"></a>: <strong>BFD_RELOC_RISCV_RELAX</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fCFA"></a>: <strong>BFD_RELOC_RISCV_CFA</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSUB6"></a>: <strong>BFD_RELOC_RISCV_SUB6</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSET6"></a>: <strong>BFD_RELOC_RISCV_SET6</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSET8"></a>: <strong>BFD_RELOC_RISCV_SET8</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSET16"></a>: <strong>BFD_RELOC_RISCV_SET16</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005fSET32"></a>: <strong>BFD_RELOC_RISCV_SET32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fRISCV_005f32_005fPCREL"></a>: <strong>BFD_RELOC_RISCV_32_PCREL</strong></dt>
+<dd><p>RISC-V relocations.
+</p></dd></dl>
+<dl>
 <dt><a name="index-BFD_005fRELOC_005fRL78_005fNEG8"></a>: <strong>BFD_RELOC_RL78_NEG8</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fRL78_005fNEG16"></a>: <strong>BFD_RELOC_RL78_NEG16</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fRL78_005fNEG24"></a>: <strong>BFD_RELOC_RL78_NEG24</strong></dt>
@@ -3356,6 +3415,48 @@ a matching LO8XG part.
 <dd><p>Relocations used by the Altera Nios II core.
 </p></dd></dl>
 <dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fU16"></a>: <strong>BFD_RELOC_PRU_U16</strong></dt>
+<dd><p>PRU LDI 16-bit unsigned data-memory relocation.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fU16_005fPMEMIMM"></a>: <strong>BFD_RELOC_PRU_U16_PMEMIMM</strong></dt>
+<dd><p>PRU LDI 16-bit unsigned instruction-memory relocation.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fLDI32"></a>: <strong>BFD_RELOC_PRU_LDI32</strong></dt>
+<dd><p>PRU relocation for two consecutive LDI load instructions that load a
+32 bit value into a register. If the higher bits are all zero, then
+the second instruction may be relaxed.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fS10_005fPCREL"></a>: <strong>BFD_RELOC_PRU_S10_PCREL</strong></dt>
+<dd><p>PRU QBBx 10-bit signed PC-relative relocation.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fU8_005fPCREL"></a>: <strong>BFD_RELOC_PRU_U8_PCREL</strong></dt>
+<dd><p>PRU 8-bit unsigned relocation used for the LOOP instruction.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005f32_005fPMEM"></a>: <strong>BFD_RELOC_PRU_32_PMEM</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005f16_005fPMEM"></a>: <strong>BFD_RELOC_PRU_16_PMEM</strong></dt>
+<dd><p>PRU Program Memory relocations.  Used to convert from byte addressing to
+32-bit word addressing.
+</p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fGNU_005fDIFF8"></a>: <strong>BFD_RELOC_PRU_GNU_DIFF8</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fGNU_005fDIFF16"></a>: <strong>BFD_RELOC_PRU_GNU_DIFF16</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fGNU_005fDIFF32"></a>: <strong>BFD_RELOC_PRU_GNU_DIFF32</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fGNU_005fDIFF16_005fPMEM"></a>: <strong>BFD_RELOC_PRU_GNU_DIFF16_PMEM</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fPRU_005fGNU_005fDIFF32_005fPMEM"></a>: <strong>BFD_RELOC_PRU_GNU_DIFF32_PMEM</strong></dt>
+<dd><p>PRU relocations to mark the difference of two local symbols.
+These are only needed to support linker relaxation and can be ignored
+when not relaxing.  The field is set to the value of the difference
+assuming no relaxation.  The relocation encodes the position of the
+second symbol so the linker can determine whether to adjust the field
+value. The PMEM variants encode the word difference, instead of byte
+difference between symbols.
+</p></dd></dl>
+<dl>
 <dt><a name="index-BFD_005fRELOC_005fIQ2000_005fOFFSET_005f16"></a>: <strong>BFD_RELOC_IQ2000_OFFSET_16</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fIQ2000_005fOFFSET_005f21"></a>: <strong>BFD_RELOC_IQ2000_OFFSET_21</strong></dt>
 <dt><a name="index-BFD_005fRELOC_005fIQ2000_005fUHI16"></a>: <strong>BFD_RELOC_IQ2000_UHI16</strong></dt>
@@ -3831,13 +3932,13 @@ conjunction with BFD_RELOC_AARCH64_LD64_GOT_LO12_NC.
 <dt><a name="index-BFD_005fRELOC_005fAARCH64_005fLD64_005fGOT_005fLO12_005fNC"></a>: <strong>BFD_RELOC_AARCH64_LD64_GOT_LO12_NC</strong></dt>
 <dd><p>Unsigned 12 bit byte offset for 64 bit load/store from the page of
 the GOT entry for this symbol.  Used in conjunction with
-BFD_RELOC_AARCH64_ADR_GOTPAGE.  Valid in LP64 ABI only.
+BFD_RELOC_AARCH64_ADR_GOT_PAGE.  Valid in LP64 ABI only.
 </p></dd></dl>
 <dl>
 <dt><a name="index-BFD_005fRELOC_005fAARCH64_005fLD32_005fGOT_005fLO12_005fNC"></a>: <strong>BFD_RELOC_AARCH64_LD32_GOT_LO12_NC</strong></dt>
 <dd><p>Unsigned 12 bit byte offset for 32 bit load/store from the page of
 the GOT entry for this symbol.  Used in conjunction with
-BFD_RELOC_AARCH64_ADR_GOTPAGE.  Valid in ILP32 ABI only.
+BFD_RELOC_AARCH64_ADR_GOT_PAGE.  Valid in ILP32 ABI only.
 </p></dd></dl>
 <dl>
 <dt><a name="index-BFD_005fRELOC_005fAARCH64_005fMOVW_005fGOTOFF_005fG0_005fNC"></a>: <strong>BFD_RELOC_AARCH64_MOVW_GOTOFF_G0_NC</strong></dt>
@@ -4039,7 +4140,7 @@ instructions.
 <dd><p>AArch64 TLS DESC relocation.
 </p></dd></dl>
 <dl>
-<dt><a name="index-BFD_005fRELOC_005fAARCH64_005fTLSDESC_005fLD64_005fLO12_005fNC"></a>: <strong>BFD_RELOC_AARCH64_TLSDESC_LD64_LO12_NC</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fAARCH64_005fTLSDESC_005fLD64_005fLO12"></a>: <strong>BFD_RELOC_AARCH64_TLSDESC_LD64_LO12</strong></dt>
 <dd><p>AArch64 TLS DESC relocation.
 </p></dd></dl>
 <dl>
@@ -4047,7 +4148,7 @@ instructions.
 <dd><p>AArch64 TLS DESC relocation.
 </p></dd></dl>
 <dl>
-<dt><a name="index-BFD_005fRELOC_005fAARCH64_005fTLSDESC_005fADD_005fLO12_005fNC"></a>: <strong>BFD_RELOC_AARCH64_TLSDESC_ADD_LO12_NC</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fAARCH64_005fTLSDESC_005fADD_005fLO12"></a>: <strong>BFD_RELOC_AARCH64_TLSDESC_ADD_LO12</strong></dt>
 <dd><p>AArch64 TLS DESC relocation.
 </p></dd></dl>
 <dl>
@@ -4381,6 +4482,19 @@ assembler and not (currently) written to any object files.
 <dt><a name="index-BFD_005fRELOC_005fVISIUM_005fIM16_005fPCREL"></a>: <strong>BFD_RELOC_VISIUM_IM16_PCREL</strong></dt>
 <dd><p>Visium Relocations.
 </p></dd></dl>
+<dl>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fLEB128"></a>: <strong>BFD_RELOC_WASM32_LEB128</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fLEB128_005fGOT"></a>: <strong>BFD_RELOC_WASM32_LEB128_GOT</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fLEB128_005fGOT_005fCODE"></a>: <strong>BFD_RELOC_WASM32_LEB128_GOT_CODE</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fLEB128_005fPLT"></a>: <strong>BFD_RELOC_WASM32_LEB128_PLT</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fPLT_005fINDEX"></a>: <strong>BFD_RELOC_WASM32_PLT_INDEX</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fABS32_005fCODE"></a>: <strong>BFD_RELOC_WASM32_ABS32_CODE</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fCOPY"></a>: <strong>BFD_RELOC_WASM32_COPY</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fCODE_005fPOINTER"></a>: <strong>BFD_RELOC_WASM32_CODE_POINTER</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fINDEX"></a>: <strong>BFD_RELOC_WASM32_INDEX</strong></dt>
+<dt><a name="index-BFD_005fRELOC_005fWASM32_005fPLT_005fSIG"></a>: <strong>BFD_RELOC_WASM32_PLT_SIG</strong></dt>
+<dd><p>WebAssembly relocations.
+</p></dd></dl>
 
 <div class="example">
 <pre class="example">
@@ -4491,6 +4605,35 @@ which don&rsquo;t have SEC_MERGE support &ndash; i.e., does nothing.
 <p><strong>Description</strong><br>
 Provides default handling of relocation effort for back ends
 which can&rsquo;t be bothered to do it efficiently.
+</p>
+<a name="index-_005fbfd_005fgeneric_005fset_005freloc"></a>
+<a name="g_t_005fbfd_005fgeneric_005fset_005freloc"></a>
+<h4 class="subsubsection">2.10.2.10 <code>_bfd_generic_set_reloc</code></h4>
+<p><strong>Synopsis</strong>
+</p><div class="example">
+<pre class="example">void _bfd_generic_set_reloc
+   (bfd *abfd,
+    sec_ptr section,
+    arelent **relptr,
+    unsigned int count);
+</pre></div>
+<p><strong>Description</strong><br>
+Installs a new set of internal relocations in SECTION.
+</p>
+<a name="index-_005fbfd_005funrecognized_005freloc"></a>
+<a name="g_t_005fbfd_005funrecognized_005freloc"></a>
+<h4 class="subsubsection">2.10.2.11 <code>_bfd_unrecognized_reloc</code></h4>
+<p><strong>Synopsis</strong>
+</p><div class="example">
+<pre class="example">bfd_boolean _bfd_unrecognized_reloc
+   (bfd * abfd,
+    sec_ptr section,
+    unsigned int r_type);
+</pre></div>
+<p><strong>Description</strong><br>
+Reports an unrecognized reloc.
+Written as a function in order to reduce code duplication.
+Returns FALSE so that it can be called from a return statement.
 </p>
 
 <hr>

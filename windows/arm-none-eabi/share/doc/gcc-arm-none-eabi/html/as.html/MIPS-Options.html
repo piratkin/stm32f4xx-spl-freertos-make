@@ -187,16 +187,23 @@ registers when supported by the ISA.  &lsquo;<samp>-mfpxx</samp>&rsquo; implies
 <dt><code>-mips16</code></dt>
 <dt><code>-no-mips16</code></dt>
 <dd><p>Generate code for the MIPS 16 processor.  This is equivalent to putting
-<code>.set mips16</code> at the start of the assembly file.  &lsquo;<samp>-no-mips16</samp>&rsquo;
+<code>.module mips16</code> at the start of the assembly file.  &lsquo;<samp>-no-mips16</samp>&rsquo;
 turns off this option.
+</p>
+</dd>
+<dt><code>-mmips16e2</code></dt>
+<dt><code>-mno-mips16e2</code></dt>
+<dd><p>Enable the use of MIPS16e2 instructions in MIPS16 mode.  This is equivalent
+to putting <code>.module mips16e2</code> at the start of the assembly file.
+&lsquo;<samp>-mno-mips16e2</samp>&rsquo; turns off this option.
 </p>
 </dd>
 <dt><code>-mmicromips</code></dt>
 <dt><code>-mno-micromips</code></dt>
 <dd><p>Generate code for the microMIPS processor.  This is equivalent to putting
-<code>.set micromips</code> at the start of the assembly file.  &lsquo;<samp>-mno-micromips</samp>&rsquo;
-turns off this option.  This is equivalent to putting <code>.set nomicromips</code>
-at the start of the assembly file.
+<code>.module micromips</code> at the start of the assembly file.
+&lsquo;<samp>-mno-micromips</samp>&rsquo; turns off this option.  This is equivalent to putting
+<code>.module nomicromips</code> at the start of the assembly file.
 </p>
 </dd>
 <dt><code>-msmartmips</code></dt>
@@ -204,7 +211,7 @@ at the start of the assembly file.
 <dd><p>Enables the SmartMIPS extensions to the MIPS32 instruction set, which
 provides a number of new instructions which target smartcard and
 cryptographic applications.  This is equivalent to putting
-<code>.set smartmips</code> at the start of the assembly file.
+<code>.module smartmips</code> at the start of the assembly file.
 &lsquo;<samp>-mno-smartmips</samp>&rsquo; turns off this option.
 </p>
 </dd>
@@ -441,6 +448,7 @@ m14kec,
 1004kf,
 1004kf1_1,
 interaptiv,
+interaptiv-mr2,
 m5100,
 m5101,
 p5600,

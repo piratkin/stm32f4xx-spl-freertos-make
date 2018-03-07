@@ -110,8 +110,27 @@ state machine to <var>value</var>, which must be an unsigned integer.
 state machine to <var>value</var>, which must be an unsigned integer.
 </p>
 </dd>
+<dt><code>view <var>value</var></code></dt>
+<dd><p>This option causes a row to be added to <code>.debug_line</code> in reference to the
+current address (which might not be the same as that of the following assembly
+instruction), and to associate <var>value</var> with the <code>view</code> register in the
+<code>.debug_line</code> state machine.  If <var>value</var> is a label, both the
+<code>view</code> register and the label are set to the number of prior <code>.loc</code>
+directives at the same program location.  If <var>value</var> is the literal
+<code>0</code>, the <code>view</code> register is set to zero, and the assembler asserts
+that there aren&rsquo;t any prior <code>.loc</code> directives at the same program
+location.  If <var>value</var> is the literal <code>-0</code>, the assembler arrange for
+the <code>view</code> register to be reset in this row, even if there are prior
+<code>.loc</code> directives at the same program location.
+</p>
+</dd>
 </dl>
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Loc_005fmark_005flabels.html#Loc_005fmark_005flabels" accesskey="n" rel="next">Loc_mark_labels</a>, Previous: <a href="Ln.html#Ln" accesskey="p" rel="prev">Ln</a>, Up: <a href="Pseudo-Ops.html#Pseudo-Ops" accesskey="u" rel="up">Pseudo Ops</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="AS-Index.html#AS-Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

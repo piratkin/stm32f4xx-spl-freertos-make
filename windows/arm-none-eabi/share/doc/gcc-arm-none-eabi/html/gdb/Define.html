@@ -74,9 +74,9 @@ Next: <a href="Hooks.html#Hooks" accesskey="n" rel="next">Hooks</a>, Up: <a href
 <a name="index-arguments_002c-to-user_002ddefined-commands"></a>
 <p>A <em>user-defined command</em> is a sequence of <small>GDB</small> commands to
 which you assign a new name as a command.  This is done with the
-<code>define</code> command.  User commands may accept up to 10 arguments
+<code>define</code> command.  User commands may accept an unlimited number of arguments
 separated by whitespace.  Arguments are accessed within the user command
-via <code>$arg0&hellip;$arg9</code>.  A trivial example:
+via <code>$arg0&hellip;$argN</code>.  A trivial example:
 </p>
 <div class="smallexample">
 <pre class="smallexample">define adder
@@ -98,7 +98,7 @@ functions calls.
 <a name="index-argument-count-in-user_002ddefined-commands"></a>
 <a name="index-how-many-arguments-_0028user_002ddefined-commands_0029"></a>
 <p>In addition, <code>$argc</code> may be used to find out how many arguments have
-been passed.  This expands to a number in the range 0&hellip;10.
+been passed.
 </p>
 <div class="smallexample">
 <pre class="smallexample">define adder
@@ -108,6 +108,21 @@ been passed.  This expands to a number in the range 0&hellip;10.
   if $argc == 3
     print $arg0 + $arg1 + $arg2
   end
+end
+</pre></div>
+
+<p>Combining with the <code>eval</code> command (see <a href="Output.html#eval">eval</a>) makes it easier
+to process a variable number of arguments:
+</p>
+<div class="smallexample">
+<pre class="smallexample">define adder
+  set $i = 0
+  set $sum = 0
+  while $i &lt; $argc
+    eval &quot;set $sum = $sum + $arg%d&quot;, $i
+    set $i = $i + 1
+  end
+  print $sum
 end
 </pre></div>
 

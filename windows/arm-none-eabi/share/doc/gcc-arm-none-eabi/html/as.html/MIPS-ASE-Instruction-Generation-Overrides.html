@@ -159,6 +159,16 @@ instructions from being accepted.
 from the XPA Extension from that point on in the assembly.  The 
 <code>.set noxpa</code> directive prevents XPA instructions from being accepted.
 </p>
+<a name="index-MIPS16e2-instruction-generation-override"></a>
+<a name="index-_002eset-mips16e2"></a>
+<a name="index-_002eset-nomips16e2"></a>
+<p>The directive <code>.set mips16e2</code> makes the assembler accept instructions
+from the MIPS16e2 Application Specific Extension from that point on in the
+assembly, whenever in MIPS16 mode.  The <code>.set nomips16e2</code> prevents
+MIPS16e2 instructions from being accepted, in MIPS16 mode.  Neither
+directive affects the state of MIPS16 mode being active itself which has
+separate controls.
+</p>
 <p>Traditional MIPS assemblers do not support these directives.
 </p>
 <hr>

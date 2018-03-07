@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -133,6 +133,18 @@ output file is specified (&lsquo;<samp>-r</samp>&rsquo;).
 <p>This command has the same effect as the &lsquo;<samp>--no-define-common</samp>&rsquo;
 command-line option: to make <code>ld</code> omit the assignment of addresses
 to common symbols even for a non-relocatable output file.
+</p>
+</dd>
+<dt><code>FORCE_GROUP_ALLOCATION</code></dt>
+<dd><a name="index-FORCE_005fGROUP_005fALLOCATION"></a>
+<a name="index-group-allocation-in-linker-script-1"></a>
+<a name="index-section-groups-1"></a>
+<a name="index-COMDAT-1"></a>
+<p>This command has the same effect as the
+&lsquo;<samp>--force-group-allocation</samp>&rsquo; command-line option: to make
+<code>ld</code> place section group members like normal input sections,
+and to delete the section groups even if a relocatable output file is
+specified (&lsquo;<samp>-r</samp>&rsquo;).
 </p>
 </dd>
 <dt><code>INSERT [ AFTER | BEFORE ] <var>output_section</var></code></dt>

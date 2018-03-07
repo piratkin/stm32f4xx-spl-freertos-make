@@ -165,14 +165,17 @@ recognized:
 <code>cortex-a32</code>,
 <code>cortex-a35</code>,
 <code>cortex-a53</code>,
+<code>cortex-a55</code>,
 <code>cortex-a57</code>,
 <code>cortex-a72</code>,
 <code>cortex-a73</code>,
+<code>cortex-a75</code>,
 <code>cortex-r4</code>,
 <code>cortex-r4f</code>,
 <code>cortex-r5</code>,
 <code>cortex-r7</code>,
 <code>cortex-r8</code>,
+<code>cortex-r52</code>,
 <code>cortex-m33</code>,
 <code>cortex-m23</code>,
 <code>cortex-m7</code>,
@@ -184,8 +187,6 @@ recognized:
 <code>exynos-m1</code>,
 <code>marvell-pj4</code>,
 <code>marvell-whitney</code>,
-<code>falkor</code>,
-<code>qdf24xx</code>,
 <code>xgene1</code>,
 <code>xgene2</code>,
 <code>ep9312</code> (ARM920 with Cirrus Maverick coprocessor),
@@ -217,7 +218,10 @@ been added, again in ascending alphabetical order.  For example,
 <p>The following extensions are currently supported:
 <code>crc</code>
 <code>crypto</code> (Cryptography Extensions for v8-A architecture, implies <code>fp+simd</code>),
+<code>dotprod</code> (Dot Product Extensions for v8.2-A architecture, implies <code>fp+simd</code>),
 <code>fp</code> (Floating Point Extensions for v8-A architecture),
+<code>fp16</code> (FP16 Extensions for v8.2-A architecture, implies <code>fp</code>),
+<code>fp16fml</code> (FP16 Floating Point Multiplication Variant Extensions for v8.2-A architecture, implies <code>fp16</code>),
 <code>idiv</code> (Integer Divide Extensions for v7-A and v7-R architectures),
 <code>iwmmxt</code>,
 <code>iwmmxt2</code>,
@@ -230,7 +234,7 @@ architectures),
 <code>simd</code> (Advanced SIMD Extensions for v8-A architecture, implies <code>fp</code>),
 <code>virt</code> (Virtualization Extensions for v7-A architecture, implies
 <code>idiv</code>),
-<code>pan</code> (Priviliged Access Never Extensions for v8-A architecture),
+<code>pan</code> (Privileged Access Never Extensions for v8-A architecture),
 <code>ras</code> (Reliability, Availability and Serviceability extensions
 for v8-A architecture),
 <code>rdma</code> (ARMv8.1 Advanced SIMD extensions for v8-A architecture, implies
@@ -277,6 +281,8 @@ names are recognized:
 <code>armv8.1-a</code>,
 <code>armv8.2-a</code>,
 <code>armv8.3-a</code>,
+<code>armv8-r</code>,
+<code>armv8.4-a</code>,
 <code>iwmmxt</code>
 <code>iwmmxt2</code>
 and
@@ -329,6 +335,8 @@ The following format options are recognized:
 <code>arm1136jf-s</code>,
 <code>maverick</code>,
 <code>neon</code>,
+<code>neon-vfpv3</code>,
+<code>neon-fp16</code>,
 <code>neon-vfpv4</code>,
 <code>neon-fp-armv8</code>,
 <code>crypto-neon-fp-armv8</code>,
@@ -341,7 +349,7 @@ also affects the way in which the <code>.double</code> assembler directive behav
 when assembling little-endian code.
 </p>
 <p>The default is dependent on the processor selected.  For Architecture 5 or
-later, the default is to assembler for VFP instructions; for earlier
+later, the default is to assemble for VFP instructions; for earlier
 architectures the default is to assemble for FPA instructions.
 </p>
 <a name="index-_002dmthumb-command-line-option_002c-ARM"></a>

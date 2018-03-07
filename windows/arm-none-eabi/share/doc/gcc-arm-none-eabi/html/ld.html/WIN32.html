@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- This file documents the GNU linker LD
-(GNU Binutils)
-version 2.28.
+(GNU Tools for Arm Embedded Processors 7-2017-q4-major)
+version 2.29.51.
 
 Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
@@ -68,7 +68,7 @@ Next: <a href="Xtensa.html#Xtensa" accesskey="n" rel="next">Xtensa</a>, Previous
 </div>
 <hr>
 <a name="ld-and-WIN32-_0028cygwin_002fmingw_0029"></a>
-<h3 class="section">4.16 <code>ld</code> and WIN32 (cygwin/mingw)</h3>
+<h3 class="section">4.17 <code>ld</code> and WIN32 (cygwin/mingw)</h3>
 
 <p>This section describes some of the win32 specific <code>ld</code> issues.
 See <a href="Options.html#Options">Command Line Options</a> for detailed description of the
@@ -221,7 +221,7 @@ application will behave unexpectedly.
 <p><code>PRIVATE</code>: Put the symbol in the DLL&rsquo;s export table, but do not put
 it into the static import library used to resolve imports at link time. The
 symbol can still be imported using the <code>LoadLibrary/GetProcAddress</code>
-API at runtime or by by using the GNU ld extension of linking directly to
+API at runtime or by using the GNU ld extension of linking directly to
 the DLL without an import library.
 </p>
 <p>See ld/deffilep.y in the binutils sources for the full specification of

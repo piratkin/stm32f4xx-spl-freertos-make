@@ -136,18 +136,17 @@ packets to write to addresses in such ranges.
 &lt;!-- .................................... .............. --&gt;
 &lt;!-- memory-map.dtd --&gt;
 &lt;!-- memory-map: Root element with versioning --&gt;
-&lt;!ELEMENT memory-map (memory | property)&gt;
+&lt;!ELEMENT memory-map (memory)*&gt;
 &lt;!ATTLIST memory-map    version CDATA   #FIXED  &quot;1.0.0&quot;&gt;
-&lt;!ELEMENT memory (property)&gt;
+&lt;!ELEMENT memory (property)*&gt;
 &lt;!-- memory: Specifies a memory region,
              and its type, or device. --&gt;
-&lt;!ATTLIST memory        type    CDATA   #REQUIRED
+&lt;!ATTLIST memory        type    (ram|rom|flash) #REQUIRED
                         start   CDATA   #REQUIRED
-                        length  CDATA   #REQUIRED
-                        device  CDATA   #IMPLIED&gt;
+                        length  CDATA   #REQUIRED&gt;
 &lt;!-- property: Generic attribute tag --&gt;
 &lt;!ELEMENT property (#PCDATA | property)*&gt;
-&lt;!ATTLIST property      name    CDATA   #REQUIRED&gt;
+&lt;!ATTLIST property      name    (blocksize) #REQUIRED&gt;
 </pre></div>
 
 <hr>

@@ -73,7 +73,9 @@ Previous: <a href="GDB_002fMI-Thread-Information.html#GDB_002fMI-Thread-Informat
 <p>Whenever a <code>*stopped</code> record is emitted because the program
 stopped after hitting an exception catchpoint (see <a href="Set-Catchpoints.html#Set-Catchpoints">Set Catchpoints</a>),
 <small>GDB</small> provides the name of the exception that was raised via
-the <code>exception-name</code> field.
+the <code>exception-name</code> field.  Also, for exceptions that were raised
+with an exception message, <small>GDB</small> provides that message via
+the <code>exception-message</code> field.
 </p>
 
 

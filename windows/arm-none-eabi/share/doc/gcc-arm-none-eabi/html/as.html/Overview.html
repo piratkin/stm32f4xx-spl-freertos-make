@@ -216,6 +216,7 @@ see <a href="Invoking.html#Invoking">Command-Line Options</a>.
    [<b>-mnan=<var>encoding</var></b>]
    [<b>-trap</b>] [<b>-no-break</b>] [<b>-break</b>] [<b>-no-trap</b>]
    [<b>-mips16</b>] [<b>-no-mips16</b>]
+   [<b>-mmips16e2</b>] [<b>-mno-mips16e2</b>]
    [<b>-mmicromips</b>] [<b>-mno-micromips</b>]
    [<b>-msmartmips</b>] [<b>-mno-smartmips</b>]
    [<b>-mips3d</b>] [<b>-no-mips3d</b>]
@@ -270,13 +271,18 @@ see <a href="Invoking.html#Invoking">Command-Line Options</a>.
     <b>-m620</b>|<b>-me500</b>|<b>-e500x2</b>|<b>-me500mc</b>|<b>-me500mc64</b>|<b>-me5500</b>|<b>-me6500</b>|<b>-mppc64bridge</b>|
     <b>-mbooke</b>|<b>-mpower4</b>|<b>-mpwr4</b>|<b>-mpower5</b>|<b>-mpwr5</b>|<b>-mpwr5x</b>|<b>-mpower6</b>|<b>-mpwr6</b>|
     <b>-mpower7</b>|<b>-mpwr7</b>|<b>-mpower8</b>|<b>-mpwr8</b>|<b>-mpower9</b>|<b>-mpwr9</b><b>-ma2</b>|
-    <b>-mcell</b>|<b>-mspe</b>|<b>-mtitan</b>|<b>-me300</b>|<b>-mcom</b>]
+    <b>-mcell</b>|<b>-mspe</b>|<b>-mspe2</b>|<b>-mtitan</b>|<b>-me300</b>|<b>-mcom</b>]
    [<b>-many</b>] [<b>-maltivec</b>|<b>-mvsx</b>|<b>-mhtm</b>|<b>-mvle</b>]
    [<b>-mregnames</b>|<b>-mno-regnames</b>]
    [<b>-mrelocatable</b>|<b>-mrelocatable-lib</b>|<b>-K PIC</b>] [<b>-memb</b>]
    [<b>-mlittle</b>|<b>-mlittle-endian</b>|<b>-le</b>|<b>-mbig</b>|<b>-mbig-endian</b>|<b>-be</b>]
    [<b>-msolaris</b>|<b>-mno-solaris</b>]
    [<b>-nops=<var>count</var></b>]
+
+<em>Target PRU options:</em>
+   [<b>-link-relax</b>]
+   [<b>-mnolink-relax</b>]
+   [<b>-mno-warn-regname-label</b>]
 
 <em>Target RL78 options:</em>
    [<b>-mg10</b>]
@@ -944,6 +950,11 @@ a picoJava processor.
 </dd>
 </dl>
 
+
+<p>See <a href="PRU-Options.html#PRU-Options">PRU Options</a>, for the options available when as is configured
+for a PRU processor.
+</p>
+
 <p>The following options are available when as is configured for the
 Motorola 68HC11 or 68HC12 series.
 </p>
@@ -1161,23 +1172,30 @@ registers when supported by the ISA.  &lsquo;<samp>-mfpxx</samp>&rsquo; implies
 <dt><code>-mips16</code></dt>
 <dt><code>-no-mips16</code></dt>
 <dd><p>Generate code for the MIPS 16 processor.  This is equivalent to putting
-<code>.set mips16</code> at the start of the assembly file.  &lsquo;<samp>-no-mips16</samp>&rsquo;
+<code>.module mips16</code> at the start of the assembly file.  &lsquo;<samp>-no-mips16</samp>&rsquo;
 turns off this option.
+</p>
+</dd>
+<dt><code>-mmips16e2</code></dt>
+<dt><code>-mno-mips16e2</code></dt>
+<dd><p>Enable the use of MIPS16e2 instructions in MIPS16 mode.  This is equivalent
+to putting <code>.module mips16e2</code> at the start of the assembly file.
+&lsquo;<samp>-mno-mips16e2</samp>&rsquo; turns off this option.
 </p>
 </dd>
 <dt><code>-mmicromips</code></dt>
 <dt><code>-mno-micromips</code></dt>
 <dd><p>Generate code for the microMIPS processor.  This is equivalent to putting
-<code>.set micromips</code> at the start of the assembly file.  &lsquo;<samp>-mno-micromips</samp>&rsquo;
-turns off this option.  This is equivalent to putting <code>.set nomicromips</code>
-at the start of the assembly file.
+<code>.module micromips</code> at the start of the assembly file.
+&lsquo;<samp>-mno-micromips</samp>&rsquo; turns off this option.  This is equivalent to putting
+<code>.module nomicromips</code> at the start of the assembly file.
 </p>
 </dd>
 <dt><code>-msmartmips</code></dt>
 <dt><code>-mno-smartmips</code></dt>
-<dd><p>Enables the SmartMIPS extension to the MIPS32 instruction set. This is
-equivalent to putting <code>.set smartmips</code> at the start of the assembly file.
-&lsquo;<samp>-mno-smartmips</samp>&rsquo; turns off this option.
+<dd><p>Enables the SmartMIPS extension to the MIPS32 instruction set.  This is
+equivalent to putting <code>.module smartmips</code> at the start of the assembly
+file.  &lsquo;<samp>-mno-smartmips</samp>&rsquo; turns off this option.
 </p>
 </dd>
 <dt><code>-mips3d</code></dt>
@@ -1405,7 +1423,7 @@ Architecture (esa) or the z/Architecture mode (zarch).
 &lsquo;<samp>arch3</samp>&rsquo;), &lsquo;<samp>g6</samp>&rsquo;, &lsquo;<samp>z900</samp>&rsquo; (or &lsquo;<samp>arch5</samp>&rsquo;), &lsquo;<samp>z990</samp>&rsquo; (or
 &lsquo;<samp>arch6</samp>&rsquo;), &lsquo;<samp>z9-109</samp>&rsquo;, &lsquo;<samp>z9-ec</samp>&rsquo; (or &lsquo;<samp>arch7</samp>&rsquo;), &lsquo;<samp>z10</samp>&rsquo; (or
 &lsquo;<samp>arch8</samp>&rsquo;), &lsquo;<samp>z196</samp>&rsquo; (or &lsquo;<samp>arch9</samp>&rsquo;), &lsquo;<samp>zEC12</samp>&rsquo; (or &lsquo;<samp>arch10</samp>&rsquo;),
-&lsquo;<samp>z13</samp>&rsquo; (or &lsquo;<samp>arch11</samp>&rsquo;), or &lsquo;<samp>arch12</samp>&rsquo;.
+&lsquo;<samp>z13</samp>&rsquo; (or &lsquo;<samp>arch11</samp>&rsquo;), or &lsquo;<samp>z14</samp>&rsquo; (or &lsquo;<samp>arch12</samp>&rsquo;).
 </p></dd>
 <dt><code>-mregnames</code></dt>
 <dt><code>-mno-regnames</code></dt>

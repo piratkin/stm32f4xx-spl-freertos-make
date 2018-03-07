@@ -2,7 +2,7 @@
 <html>
 <!-- This file documents the BFD library.
 
-Copyright (C) 1991-2016 Free Software Foundation, Inc.
+Copyright (C) 1991-2017 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -194,9 +194,11 @@ and 68020 and 68030 for Motorola 68020 and 68030.
 #define bfd_mach_sparc_v9v             18 /* with OSA2011 and T4 and IMA and FJMAU add'ns.  */
 #define bfd_mach_sparc_v8plusm         19 /* with OSA2015 and M7 add'ns.  */
 #define bfd_mach_sparc_v9m             20 /* with OSA2015 and M7 add'ns.  */
+#define bfd_mach_sparc_v8plusm8        21 /* with OSA2017 and M8 add'ns.  */
+#define bfd_mach_sparc_v9m8            22 /* with OSA2017 and M8 add'ns.  */
 /* Nonzero if MACH has the v9 instruction set.  */
 #define bfd_mach_sparc_v9_p(mach) \
-  ((mach) &gt;= bfd_mach_sparc_v8plus &amp;&amp; (mach) &lt;= bfd_mach_sparc_v9m \
+  ((mach) &gt;= bfd_mach_sparc_v8plus &amp;&amp; (mach) &lt;= bfd_mach_sparc_v9m8 \
    &amp;&amp; (mach) != bfd_mach_sparc_sparclite_le)
 /* Nonzero if MACH is a 64 bit sparc architecture.  */
 #define bfd_mach_sparc_64bit_p(mach) \
@@ -206,7 +208,8 @@ and 68020 and 68030 for Motorola 68020 and 68030.
    &amp;&amp; (mach) != bfd_mach_sparc_v8plusd \
    &amp;&amp; (mach) != bfd_mach_sparc_v8pluse \
    &amp;&amp; (mach) != bfd_mach_sparc_v8plusv \
-   &amp;&amp; (mach) != bfd_mach_sparc_v8plusm)
+   &amp;&amp; (mach) != bfd_mach_sparc_v8plusm \
+   &amp;&amp; (mach) != bfd_mach_sparc_v8plusm8)
   bfd_arch_spu,       /* PowerPC SPU */
 #define bfd_mach_spu           256
   bfd_arch_mips,      /* MIPS Rxxxx */
@@ -244,6 +247,7 @@ and 68020 and 68030 for Motorola 68020 and 68030.
 #define bfd_mach_mips_octeon2          6502
 #define bfd_mach_mips_octeon3          6503
 #define bfd_mach_mips_xlr              887682   /* decimal 'XLR'  */
+#define bfd_mach_mips_interaptiv_mr2   736550   /* decimal 'IA2'  */
 #define bfd_mach_mipsisa32             32
 #define bfd_mach_mipsisa32r2           33
 #define bfd_mach_mipsisa32r3           34
@@ -449,6 +453,7 @@ and 68020 and 68030 for Motorola 68020 and 68030.
 #define bfd_mach_moxie         1
   bfd_arch_ft32,       /* The ft32 processor */
 #define bfd_mach_ft32          1
+#define bfd_mach_ft32b         2
   bfd_arch_mcore,
   bfd_arch_mep,
 #define bfd_mach_mep           1
@@ -504,6 +509,9 @@ and 68020 and 68030 for Motorola 68020 and 68030.
 #define bfd_mach_cris_v0_v10   255
 #define bfd_mach_cris_v32      32
 #define bfd_mach_cris_v10_v32  1032
+  bfd_arch_riscv,
+#define bfd_mach_riscv32       132
+#define bfd_mach_riscv64       164
   bfd_arch_rl78,
 #define bfd_mach_rl78  0x75
   bfd_arch_rx,        /* Renesas RX.  */
@@ -572,6 +580,10 @@ and 68020 and 68030 for Motorola 68020 and 68030.
 #define bfd_mach_nios2r2       2
   bfd_arch_visium,     /* Visium */
 #define bfd_mach_visium        1
+  bfd_arch_wasm32,     /* WebAssembly */
+#define bfd_mach_wasm32        1
+  bfd_arch_pru,        /* PRU */
+#define bfd_mach_pru   0
   bfd_arch_last
   };
 </pre></div>

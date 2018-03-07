@@ -81,7 +81,7 @@ file-management commands (see <a href="Files.html#Files">Commands to Specify Fil
 <a name="index-symbol-names"></a>
 <a name="index-names-of-symbols"></a>
 <a name="index-quoting-names"></a>
-<p>Occasionally, you may need to refer to symbols that contain unusual
+<a name="quoting-names"></a><p>Occasionally, you may need to refer to symbols that contain unusual
 characters, which <small>GDB</small> ordinarily treats as word delimiters.  The
 most frequent case is in referring to static variables in other
 source files (see <a href="Variables.html#Variables">Program Variables</a>).  File names
@@ -353,6 +353,24 @@ given these declarations:
 <p>&ldquo;Incomplete type&rdquo; is C terminology for data types that are not
 completely specified.
 </p>
+<a name="index-unknown-type"></a>
+<p>Othertimes, information about a variable&rsquo;s type is completely absent
+from the debug information included in the program.  This most often
+happens when the program or library where the variable is defined
+includes no debug information at all.  <small>GDB</small> knows the variable
+exists from inspecting the linker/loader symbol table (e.g., the ELF
+dynamic symbol table), but such symbols do not contain type
+information.  Inspecting the type of a (global) variable for which
+<small>GDB</small> has no type information shows:
+</p>
+<div class="smallexample">
+<pre class="smallexample">  (gdb) ptype var
+  type = &lt;data variable, no debug info&gt;
+</pre></div>
+
+<p>See <a href="Variables.html#Variables">no debug info variables</a>, for how to print the values
+of such variables.
+</p>
 <a name="index-info-types"></a>
 </dd>
 <dt><code>info types <var>regexp</var></code></dt>
@@ -540,22 +558,33 @@ entered from the keyboard causes symbol information to be loaded.
 <a name="index-maint-print-msymbols"></a>
 <a name="index-minimal-symbol-dump"></a>
 </dd>
-<dt><code>maint print symbols <var>filename</var></code></dt>
-<dt><code>maint print psymbols <var>filename</var></code></dt>
-<dt><code>maint print msymbols <var>filename</var></code></dt>
-<dd><p>Write a dump of debugging symbol data into the file <var>filename</var>.
-These commands are used to debug the <small>GDB</small> symbol-reading code.  Only
-symbols with debugging data are included.  If you use &lsquo;<samp>maint print
-symbols</samp>&rsquo;, <small>GDB</small> includes all the symbols for which it has already
-collected full details: that is, <var>filename</var> reflects symbols for
-only those files whose symbols <small>GDB</small> has read.  You can use the
-command <code>info sources</code> to find out which files these are.  If you
-use &lsquo;<samp>maint print psymbols</samp>&rsquo; instead, the dump shows information about
-symbols that <small>GDB</small> only knows partially&mdash;that is, symbols defined in
-files that <small>GDB</small> has skimmed, but not yet read completely.  Finally,
-&lsquo;<samp>maint print msymbols</samp>&rsquo; dumps just the minimal symbol information
-required for each object file from which <small>GDB</small> has read some symbols.
-See <a href="Files.html#Files">Commands to Specify Files</a>, for a discussion of how
+<dt><code>maint print symbols <span class="roman">[</span>-pc <var>address</var><span class="roman">]</span> <span class="roman">[</span><var>filename</var><span class="roman">]</span></code></dt>
+<dt><code>maint print symbols <span class="roman">[</span>-objfile <var>objfile</var><span class="roman">]</span> <span class="roman">[</span>-source <var>source</var><span class="roman">]</span> <span class="roman">[</span>--<span class="roman">]</span> <span class="roman">[</span><var>filename</var><span class="roman">]</span></code></dt>
+<dt><code>maint print psymbols <span class="roman">[</span>-objfile <var>objfile</var><span class="roman">]</span> <span class="roman">[</span>-pc <var>address</var><span class="roman">]</span> <span class="roman">[</span>--<span class="roman">]</span> <span class="roman">[</span><var>filename</var><span class="roman">]</span></code></dt>
+<dt><code>maint print psymbols <span class="roman">[</span>-objfile <var>objfile</var><span class="roman">]</span> <span class="roman">[</span>-source <var>source</var><span class="roman">]</span> <span class="roman">[</span>--<span class="roman">]</span> <span class="roman">[</span><var>filename</var><span class="roman">]</span></code></dt>
+<dt><code>maint print msymbols <span class="roman">[</span>-objfile <var>objfile</var><span class="roman">]</span> <span class="roman">[</span>--<span class="roman">]</span> <span class="roman">[</span><var>filename</var><span class="roman">]</span></code></dt>
+<dd><p>Write a dump of debugging symbol data into the file <var>filename</var> or
+the terminal if <var>filename</var> is unspecified.
+If <code>-objfile <var>objfile</var></code> is specified, only dump symbols for
+that objfile.
+If <code>-pc <var>address</var></code> is specified, only dump symbols for the file
+with code at that address.  Note that <var>address</var> may be a symbol like
+<code>main</code>.
+If <code>-source <var>source</var></code> is specified, only dump symbols for that
+source file.
+</p>
+<p>These commands are used to debug the <small>GDB</small> symbol-reading code.
+These commands do not modify internal <small>GDB</small> state, therefore
+&lsquo;<samp>maint print symbols</samp>&rsquo; will only print symbols for already expanded symbol
+tables.
+You can use the command <code>info sources</code> to find out which files these are.
+If you use &lsquo;<samp>maint print psymbols</samp>&rsquo; instead, the dump shows information
+about symbols that <small>GDB</small> only knows partially&mdash;that is, symbols
+defined in files that <small>GDB</small> has skimmed, but not yet read completely.
+Finally, &lsquo;<samp>maint print msymbols</samp>&rsquo; just dumps &ldquo;minimal symbols&rdquo;, e.g.,
+&ldquo;ELF symbols&rdquo;.
+</p>
+<p>See <a href="Files.html#Files">Commands to Specify Files</a>, for a discussion of how
 <small>GDB</small> reads symbols (in the description of <code>symbol-file</code>).
 </p>
 <a name="index-maint-info-symtabs"></a>

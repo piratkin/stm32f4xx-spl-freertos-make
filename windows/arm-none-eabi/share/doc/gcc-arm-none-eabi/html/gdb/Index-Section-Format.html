@@ -265,7 +265,7 @@ switch (die-&gt;tag)
     break;
   case DW_TAG_enumerator:
     kind = VARIABLE;
-    is_static = (language != CPLUS &amp;&amp; language != JAVA);
+    is_static = language != CPLUS;
     break;
   case DW_TAG_subprogram:
     kind = FUNCTION;
@@ -289,7 +289,7 @@ switch (die-&gt;tag)
   case DW_TAG_union_type:
   case DW_TAG_enumeration_type:
     kind = TYPE;
-    is_static = (language != CPLUS &amp;&amp; language != JAVA);
+    is_static = language != CPLUS;
     break;
   default:
     assert (0);

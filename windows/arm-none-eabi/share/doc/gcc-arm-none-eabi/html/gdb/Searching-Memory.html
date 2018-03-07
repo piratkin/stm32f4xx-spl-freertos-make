@@ -110,6 +110,8 @@ They may be specified in either order, apart or together.
 <p>All values are interpreted in the current language.
 This means, for example, that if the current source language is C/C<tt>++</tt>
 then searching for the string &ldquo;hello&rdquo; includes the trailing &rsquo;\0&rsquo;.
+The null terminator can be removed from searching by using casts,
+e.g.: &lsquo;<samp>{char[5]}&quot;hello&quot;</samp>&rsquo;.
 </p>
 <p>If the value size is not specified, it is taken from the
 value&rsquo;s type in the current language.
@@ -160,7 +162,11 @@ hello ()
 (gdb) find &amp;hello[0], +sizeof(hello), 'h', 'e', 'l', 'l', 'o'
 0x8049567 &lt;hello.1620&gt;
 0x804956d &lt;hello.1620+6&gt;
-2 patterns found
+2 patterns found.
+(gdb) find &amp;hello[0], +sizeof(hello), {char[5]}&quot;hello&quot;
+0x8049567 &lt;hello.1620&gt;
+0x804956d &lt;hello.1620+6&gt;
+2 patterns found.
 (gdb) find /b1 &amp;hello[0], +sizeof(hello), 'h', 0x65, 'l'
 0x8049567 &lt;hello.1620&gt;
 1 pattern found

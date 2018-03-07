@@ -151,7 +151,7 @@ default behaviour.
 </dd>
 <dt><code>-my</code></dt>
 <dd><p>tells the assembler to generate a warning message if a NOP does not
-immediately forllow an instruction that enables or disables
+immediately follow an instruction that enables or disables
 interrupts.  This is the default.
 </p>
 <p>Note that this option can be stacked with the <samp>-mn</samp> option so
@@ -167,6 +167,20 @@ then insert them automatically.
 <dd><p>mark the object file as one that requires data to copied from ROM to
 RAM at execution startup.  Disabled by default.
 </p>
+</dd>
+<dt><code>-mdata-region=<var>region</var></code></dt>
+<dd><p>Select the region data will be placed in.
+Region placement is performed by the compiler and linker.  The only effect this
+option will have on the assembler is that if <var>upper</var> or <var>either</var> is
+selected, then the symbols to initialise high data and bss will be defined.
+Valid <var>region</var> values are:
+</p><dl compact="compact">
+<dt><code>none</code></dt>
+<dt><code>lower</code></dt>
+<dt><code>upper</code></dt>
+<dt><code>either</code></dt>
+</dl>
+
 </dd>
 </dl>
 

@@ -80,7 +80,8 @@ Next: <a href="c_002b_002bfilt.html#c_002b_002bfilt" accesskey="n" rel="next">c+
       [<samp>-s</samp>|<samp>--strip-all</samp>]
       [<samp>-S</samp>|<samp>-g</samp>|<samp>-d</samp>|<samp>--strip-debug</samp>]
       [<samp>--strip-dwo</samp>]
-      [<samp>-K</samp> <var>symbolname</var> |<samp>--keep-symbol=</samp><var>symbolname</var>]
+      [<samp>-K</samp> <var>symbolname</var>|<samp>--keep-symbol=</samp><var>symbolname</var>]
+      [<samp>-M</samp>|<samp>--merge-notes</samp>][<samp>--no-merge-notes</samp>]
       [<samp>-N</samp> <var>symbolname</var> |<samp>--strip-symbol=</samp><var>symbolname</var>]
       [<samp>-w</samp>|<samp>--wildcard</samp>]
       [<samp>-x</samp>|<samp>--discard-all</samp>] [<samp>-X</samp> |<samp>--discard-locals</samp>]
@@ -213,6 +214,14 @@ for more information.
 <dt><code>--keep-symbol=<var>symbolname</var></code></dt>
 <dd><p>When stripping symbols, keep symbol <var>symbolname</var> even if it would
 normally be stripped.  This option may be given more than once.
+</p>
+</dd>
+<dt><code>-M</code></dt>
+<dt><code>--merge-notes</code></dt>
+<dt><code>--no-merge-notes</code></dt>
+<dd><p>For ELF files, attempt (or do not attempt) to reduce the size of any
+SHT_NOTE type sections by removing duplicate notes.  The default is to
+attempt this reduction.
 </p>
 </dd>
 <dt><code>-N <var>symbolname</var></code></dt>

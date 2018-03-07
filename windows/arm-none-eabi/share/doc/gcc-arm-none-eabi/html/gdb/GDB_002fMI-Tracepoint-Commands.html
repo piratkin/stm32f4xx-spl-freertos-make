@@ -371,13 +371,17 @@ body=[variable={name=&quot;$trace_timestamp&quot;,initial=&quot;0&quot;}
 <h4 class="subsubheading">Synopsis</h4>
 
 <div class="smallexample">
-<pre class="smallexample"> -trace-save [-r ] <var>filename</var>
+<pre class="smallexample"> -trace-save [ -r ] [ -ctf ] <var>filename</var>
 </pre></div>
 
 <p>Saves the collected trace data to <var>filename</var>.  Without the
 &lsquo;<samp>-r</samp>&rsquo; option, the data is downloaded from the target and saved
 in a local file.  With the &lsquo;<samp>-r</samp>&rsquo; option the target is asked
 to perform the save.
+</p>
+<p>By default, this command will save the trace in the tfile format.  You can
+supply the optional &lsquo;<samp>-ctf</samp>&rsquo; argument to save it the CTF format. See
+<a href="Trace-Files.html#Trace-Files">Trace Files</a> for more information about CTF.
 </p>
 <a name="GDB-Command-54"></a>
 <h4 class="subsubheading"><small>GDB</small> Command</h4>
@@ -396,7 +400,7 @@ to perform the save.
 <pre class="smallexample"> -trace-start
 </pre></div>
 
-<p>Starts a tracing experiments.  The result of this command does not
+<p>Starts a tracing experiment.  The result of this command does not
 have any fields.
 </p>
 <a name="GDB-Command-55"></a>

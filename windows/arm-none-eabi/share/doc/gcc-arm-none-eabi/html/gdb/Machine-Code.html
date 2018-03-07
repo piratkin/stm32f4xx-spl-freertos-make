@@ -320,6 +320,30 @@ location of the relocation table.  On some architectures, <small>GDB</small>
 might be able to resolve these to actual function names.
 </p>
 <dl compact="compact">
+<dd><a name="index-set-disassembler_002doptions"></a>
+<a name="index-disassembler-options"></a>
+</dd>
+<dt><code>set disassembler-options <var>option1</var>[,<var>option2</var>&hellip;]</code></dt>
+<dd><p>This command controls the passing of target specific information to
+the disassembler.  For a list of valid options, please refer to the
+<code>-M</code>/<code>--disassembler-options</code> section of the &lsquo;<samp>objdump</samp>&rsquo;
+manual and/or the output of <kbd>objdump --help</kbd>
+(see <a href="http://sourceware.org/binutils/docs/binutils/objdump.html#objdump">objdump</a> in <cite>The GNU Binary Utilities</cite>).
+The default value is the empty string.
+</p>
+<p>If it is necessary to specify more than one disassembler option, then
+multiple options can be placed together into a comma separated list.
+Currently this command is only supported on targets ARM, PowerPC
+and S/390.
+</p>
+<a name="index-show-disassembler_002doptions"></a>
+</dd>
+<dt><code>show disassembler-options</code></dt>
+<dd><p>Show the current setting of the disassembler options.
+</p></dd>
+</dl>
+
+<dl compact="compact">
 <dd><a name="index-set-disassembly_002dflavor"></a>
 <a name="index-Intel-disassembly-flavor"></a>
 <a name="index-AT_0026T-disassembly-flavor"></a>
