@@ -44,31 +44,31 @@ SRCS  += system_stm32f4xx.c
 # These source files implement the functions we use.
 # make finds them by searching the vpath defined above.
 
-SRCS  += stm32f4xx_adc.c
-SRCS  += stm32f4xx_can.c
-SRCS  += stm32f4xx_crc.c
-SRCS  += stm32f4xx_cryp.c
-SRCS  += stm32f4xx_dac.c
-SRCS  += stm32f4xx_dbgmcu.c
-SRCS  += stm32f4xx_dcmi.c
-SRCS  += stm32f4xx_dma.c
-SRCS  += stm32f4xx_exti.c
-SRCS  += stm32f4xx_flash.c
-SRCS  += stm32f4xx_fsmc.c
-SRCS  += stm32f4xx_hash.c
+#SRCS  += stm32f4xx_adc.c
+#SRCS  += stm32f4xx_can.c
+#SRCS  += stm32f4xx_crc.c
+#SRCS  += stm32f4xx_cryp.c
+#SRCS  += stm32f4xx_dac.c
+#SRCS  += stm32f4xx_dbgmcu.c
+#SRCS  += stm32f4xx_dcmi.c
+#SRCS  += stm32f4xx_dma.c
+#SRCS  += stm32f4xx_exti.c
+#SRCS  += stm32f4xx_flash.c
+#SRCS  += stm32f4xx_fsmc.c
+#SRCS  += stm32f4xx_hash.c
 SRCS  += stm32f4xx_gpio.c
-SRCS  += stm32f4xx_i2c.c
-SRCS  += stm32f4xx_iwdg.c
-SRCS  += stm32f4xx_pwr.c
+#SRCS  += stm32f4xx_i2c.c
+#SRCS  += stm32f4xx_iwdg.c
+#SRCS  += stm32f4xx_pwr.c
 SRCS  += stm32f4xx_rcc.c
-SRCS  += stm32f4xx_rng.c
-SRCS  += stm32f4xx_rtc.c
-SRCS  += stm32f4xx_sdio.c
-SRCS  += stm32f4xx_spi.c
-SRCS  += stm32f4xx_syscfg.c
-SRCS  += stm32f4xx_tim.c
-SRCS  += stm32f4xx_usart.c
-SRCS  += stm32f4xx_wwdg.c
+#SRCS  += stm32f4xx_rng.c
+#SRCS  += stm32f4xx_rtc.c
+#SRCS  += stm32f4xx_sdio.c
+#SRCS  += stm32f4xx_spi.c
+#SRCS  += stm32f4xx_syscfg.c
+#SRCS  += stm32f4xx_tim.c
+#SRCS  += stm32f4xx_usart.c
+#SRCS  += stm32f4xx_wwdg.c
 SRCS  += misc.c
 
 # Startup file written by ST
