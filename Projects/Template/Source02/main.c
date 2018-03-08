@@ -35,8 +35,6 @@ int main(void)
         {
             break;
         }
-        
-        taskId++;
     }
     
     vTaskStartScheduler();
