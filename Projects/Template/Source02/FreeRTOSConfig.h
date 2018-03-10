@@ -93,7 +93,7 @@ extern uint32_t SystemCoreClock;
 #define configCPU_CLOCK_HZ				( SystemCoreClock )
 #define configTICK_RATE_HZ				( ( TickType_t ) 1000 )
 #define configMAX_PRIORITIES			( 5 )
-#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 130 )
+#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 100 )
 #define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )
 #define configMAX_TASK_NAME_LEN			( 10 )
 #define configUSE_TRACE_FACILITY		1
@@ -109,7 +109,7 @@ extern uint32_t SystemCoreClock;
 #define configGENERATE_RUN_TIME_STATS	0
 
 /* Co-routine definitions. */
-#define configUSE_CO_ROUTINES 		0
+#define configUSE_CO_ROUTINES 	    	0
 #define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
 
 /* Software timer definitions. */

@@ -16,7 +16,7 @@ static void t(void* pvParameters);
 
 #define UNUSED(x)    (void)(x)
 
-#define MAX_TASKS    1024
+#define MAX_TASKS    100
 
 int taskId;
 TaskHandle_t xHandle[MAX_TASKS];
